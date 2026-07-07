@@ -14,7 +14,6 @@ body {
     margin: 0;
     color: var(--text);
     font-family: "Cormorant Garamond", serif;
-    /* Apple koyuluğu ile altın/islami geometri birleşimi arka plan */
     background: 
         radial-gradient(circle at 50% 50%, rgba(212,175,55,0.08), transparent 60%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
@@ -23,11 +22,10 @@ body {
     position: relative;
 }
 
-/* Hafif Geometrik İslami Sanat ve Altın Çizgi Dokusu */
 body::before {
     content: '';
     position: fixed;
-    inset: 20px; /* Sayfa kenarlarında şık bir çerçeve */
+    inset: 20px;
     border: 1px solid rgba(212, 175, 55, 0.15);
     background-image: 
         radial-gradient(rgba(212,175,55,0.05) 1px, transparent 1px),
@@ -39,7 +37,6 @@ body::before {
     z-index: 1;
 }
 
-/* Altın Tozları Katmanı */
 .gold-dust-container {
     position: fixed;
     inset: 0;
@@ -52,37 +49,19 @@ body::before {
     background: radial-gradient(circle, var(--gold2) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
-    /* Hem yukarı doğru yükselme hem de rüzgarla savrulma efekti */
     animation: floatAndSway 14s infinite ease-in-out;
     will-change: transform, opacity;
 }
 
 @keyframes floatAndSway {
-    0% {
-        transform: translateY(105vh) translateX(0) scale(0.5);
-        opacity: 0;
-    }
-    5% {
-        opacity: 0.6;
-    }
-    /* Yolculuğun ortasında rüzgar sağa doğru savuruyor */
-    40% {
-        transform: translateY(60vh) translateX(60px) scale(1);
-    }
-    /* Yukarı doğru çıkarken rüzgar bu sefer sola doğru yalpalıyor */
-    75% {
-        transform: translateY(30vh) translateX(-40px) scale(0.8);
-    }
-    90% {
-        opacity: 0.6;
-    }
-    100% {
-        transform: translateY(-10vh) translateX(30px) scale(1.2);
-        opacity: 0;
-    }
+    0% { transform: translateY(105vh) translateX(0) scale(0.5); opacity: 0; }
+    5% { opacity: 0.6; }
+    40% { transform: translateY(60vh) translateX(60px) scale(1); }
+    75% { transform: translateY(30vh) translateX(-40px) scale(0.8); }
+    90% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(30px) scale(1.2); opacity: 0; }
 }
 
-/* Yavaşça Açılan Başlık Efekti */
 .fade-in-title {
     animation: fadeInPage 2.5s ease-out forwards;
     opacity: 0;
@@ -119,14 +98,14 @@ h2 {
 }
 
 /* ==========================================================
-   İZOLE DOCK VE BAĞIMSIZ KAPAK TASARIMI
+   KİLİTSİZ VE ÖZGÜR KAPAK ALANI
 ========================================================== */
 .dock {
     display: flex !important;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 50px 40px; /* Kapaklar arası ferah boşluk */
+    gap: 50px 40px;
     max-width: 900px;
     margin: 40px auto 0;
     padding: 60px 20px;
@@ -146,13 +125,12 @@ h2 {
     z-index: 11;
     will-change: transform, opacity;
     
-    /* GÖKTEN İNİŞ BAŞLANGIÇ AYARI */
+    /* Başlangıçta görünmez ve yukarıda dururlar (JS inderecek) */
     opacity: 0;
     transform: translateY(-100px) scale(0.7) rotateX(20deg);
     
-    /* HEM İNİŞ ANİMASYONU HEM DE MOUSE HOVER GEÇİŞLERİNİ TEK BİR YERDE BİRLEŞTİRDİK */
-    animation: magicDrop 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+    /* Fare hareketlerini algılayacak yumuşak geçiş kuralı */
+    transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
 }
 
 .book:hover {
@@ -164,14 +142,12 @@ h2 {
     display: block;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    /* Fare hareket ederken background animasyonunu yumuşatıyoruz */
-    transition: filter 0.25s ease, background .25s; 
+    transition: filter 0.25s ease, background .25s, box-shadow 0.3s ease; 
     overflow: hidden;
-    will-change: filter, background;
-    /* GÖRÜNTÜYÜ JEST GİBİ NETLEŞTİREN AYARLAR */
-    image-rendering: -webkit-optimize-contrast; /* Safari ve Chrome için keskinlik */
-    image-rendering: crisp-edges;               /* Genel tarayıcı netliği */
-    transform: translateZ(0);                   /* Donanım ivmesiyle bulanıklık önleme */
+    will-change: filter, background, box-shadow;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
 }
 
 /* SOSYAL MEDYA SİMGELERİ */
@@ -212,15 +188,12 @@ h2 {
     transition: fill 0.3s;
 }
 
-/* Apple Tarzı Sosyal Medya Hover Efektleri */
 .social-btn:hover {
     transform: scale(1.18);
     background: rgba(212, 175, 55, 0.12);
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
 }
-.social-btn:hover svg {
-    fill: #ffffff;
-}
+.social-btn:hover svg { fill: #ffffff; }
 
 .info-section {
     max-width: 750px;
@@ -234,14 +207,8 @@ h2 {
     position: relative;
     z-index: 5;
 }
-.info-section h3 {
-    font-family: "Cinzel Decorative", serif;
-    color: var(--gold2);
-}
-.info-section p {
-    line-height: 1.8;
-    color: #e3decb;
-}
+.info-section h3 { font-family: "Cinzel Decorative", serif; color: var(--gold2); }
+.info-section p { line-height: 1.8; color: #e3decb; }
 
 footer {
     text-align: center;
@@ -255,7 +222,7 @@ footer {
 /* --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- */
 @media(max-width:700px){
     .dock { 
-        max-width: 360px; /* Telefonlarda yan yana sadece 2 kapak sığdırır */
+        max-width: 360px;
         gap: 35px 20px;
         padding: 40px 10px;
     }
@@ -265,7 +232,6 @@ footer {
         width: 135px !important;
         transform: none !important; 
         transition: none !important; 
-        animation: magicDropMobile 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards !important;
     }
 
     .book:hover, .book:active {
@@ -274,46 +240,40 @@ footer {
     }
 }
 
-/* Çok Dilli Açıklama Alanı Düzenlemesi */
 .subtitle {
     max-width: 850px;
     margin: 30px auto;
     display: flex;
     flex-direction: column;
-    gap: 18px; /* Cümlelerin arasındaki mesafeyi ayarlar */
+    gap: 18px;
 }
 
 .lang-text {
     display: flex;
-    align-items: center; /* Bayrak ve yazıyı dikeyde tam ortalar */
+    align-items: center;
     margin: 0;
     font-size: 1.05rem;
     line-height: 1.5;
     color: #e3decb;
     opacity: 0.9;
 }
+.lang-text strong { color: var(--gold2); }
 
-.lang-text strong {
-    color: var(--gold2); /* Instagram kullanıcı adını altın rengi yapar */
-}
-
-/* Bayrak Görsellerinin Hizalanması ve Estetiği */
 .flag-icon {
-    width: 24px;         /* İdeal küçük bayrak genişliği */
+    width: 24px;
     height: auto;
     vertical-align: middle;
-    margin-right: 10px;  /* Yazıyla bayrak arasındaki boşluk */
-    border-radius: 3px;  /* Premium durması için hafif yuvarlak köşeler */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Arkadaki koyuluğa uyması için hafif gölge */
+    margin-right: 10px;
+    border-radius: 3px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
     display: inline-block;
 }
 
-/* Premium Müzik Kontrol Butonu */
 .music-btn {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 9999; /* Her şeyin üstünde görünmesi için */
+    z-index: 9999;
     background: rgba(18, 18, 18, 0.6);
     border: 1px solid var(--gold2);
     color: #e3decb;
@@ -324,7 +284,7 @@ footer {
     display: flex;
     align-items: center;
     gap: 8px;
-    backdrop-filter: blur(10px); /* Apple tarzı arkadaki tozları buzlu cam yapar */
+    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(0,0,0,0.4);
@@ -337,69 +297,8 @@ footer {
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
-/* Telefonlarda butonun yerini biraz optimize edelim */
 @media(max-width:700px){
-    .music-btn {
-        top: 15px;
-        right: 15px;
-        padding: 8px 12px;
-        font-size: 0.8rem;
-    }
-}
-
-/* ==========================================================
-   SİHİRLİ GÖKTEN İNİŞ VE IŞIK SÜZMESİ ANİMASYONU
-========================================================== */
-@keyframes magicDrop {
-    0% {
-        opacity: 0;
-        transform: translateY(-120px) scale(0.6) rotateX(30deg);
-        box-shadow: 0 -50px 100px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
-        filter: brightness(2) blur(1px);
-    }
-    60% {
-        opacity: 1;
-        filter: brightness(1.3) blur(0);
-        box-shadow: 0 30px 50px rgba(212, 175, 55, 0.2);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0) scale(1) rotateX(0) rotateY(0);
-        box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        filter: brightness(1);
-    }
-}
-
-.book:nth-child(1) { animation-delay: 0.1s; }
-.book:nth-child(2) { animation-delay: 0.25s; }
-.book:nth-child(3) { animation-delay: 0.4s; }
-.book:nth-child(4) { animation-delay: 0.55s; }
-.book:nth-child(5) { animation-delay: 0.7s; }
-.book:nth-child(6) { animation-delay: 0.85s; }
-
-/* Mobilde sırayla iniş süreleri */
-@media(max-width:700px){
-    .book:nth-child(1) { animation-delay: 0.1s; }
-    .book:nth-child(2) { animation-delay: 0.25s; }
-    .book:nth-child(3) { animation-delay: 0.4s; }
-    .book:nth-child(4) { animation-delay: 0.55s; }
-    .book:nth-child(5) { animation-delay: 0.7s; }
-    .book:nth-child(6) { animation-delay: 0.85s; }
-}
-
-@keyframes magicDropMobile {
-    0% {
-        opacity: 0;
-        transform: translateY(-80px) scale(0.8);
-        box-shadow: 0 -30px 60px rgba(212, 175, 55, 0.3);
-        filter: brightness(1.5);
-    }
-    100% {
-        opacity: 1;
-        transform: none !important; 
-        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        filter: brightness(1);
-    }
+    .music-btn { top: 15px; right: 15px; padding: 8px 12px; font-size: 0.8rem; }
 }
 
 /* ==========================================================
@@ -410,7 +309,7 @@ footer {
     margin: 50px auto;
     padding: 0 20px;
     display: grid !important;
-    grid-template-columns: repeat(2, 1fr); /* Yan yana 2 şık kutu düzeni */
+    grid-template-columns: repeat(2, 1fr);
     gap: 25px 30px; 
     position: relative;
     z-index: 5;
@@ -446,14 +345,10 @@ footer {
 
 @media(max-width:700px){
     .share-grid-container {
-        grid-template-columns: 1fr; /* Mobilde alt alta tekli sıralama */
+        grid-template-columns: 1fr;
         gap: 20px;
         margin: 30px auto;
     }
-    .share-card {
-        padding: 20px;
-    }
-    .share-text {
-        font-size: 0.88rem;
-    }
+    .share-card { padding: 20px; }
+    .share-text { font-size: 0.88rem; }
 }
