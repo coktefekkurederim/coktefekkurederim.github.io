@@ -466,7 +466,7 @@ h1 span {
     }
 }
 /* ==========================================================
-   YENİLENMİŞ YAN PANEL GİRİŞ MOTORU (GENİŞLETİLMİŞ)
+   KESİNTİSİZ YAN PANEL GİRİŞ MOTORU (SABİTLENMİŞ FARE)
 ========================================================== */
 
 /* Kapakların temel boyutu ve hizalama hazırlığı */
@@ -477,38 +477,45 @@ h1 span {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Kitap Giriş Penceresinin Yeni Yan Tasarımı */
+/* Kitap Giriş Penceresinin Yeni Sabit Tasarımı */
 .book-intro {
     position: absolute;
     top: 50%;
-    left: 105%; /* Kapağın hemen sağ yanında açılması için */
-    transform: translateY(-50%) translateX(15px);
+    left: 100%; /* Aradaki boşluğu kapatmak için tam sınıra (100%) çektik */
+    transform: translateY(-50%) translateX(0); /* İlk konumda hazır bekliyor */
     
-    width: 340px; /* Okunabilirliği artırmak için genişliği 260px'ten 340px'e çıkardık */
-    max-height: 280px; /* Çok uzun yazılarda taşmayı önlemek için maksimum yükseklik */
-    overflow-y: auto; /* Eğer yazı çok çok uzun olursa kutu içinde asilce kaydırılabilir */
+    width: 340px; 
+    max-height: 280px; 
+    overflow-y: auto; 
     
-    background: rgba(18, 13, 4, 0.98); /* Arka planı biraz daha belirginleştirdik */
+    background: rgba(18, 13, 4, 0.98); 
     border: 1px solid #bf953f;
     padding: 18px;
     border-radius: 8px;
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.25);
     
     opacity: 0;
-    pointer-events: none;
-    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    pointer-events: none; /* İlk başta farenin tıklamasını engelliyoruz */
+    transition: opacity 0.3s ease, transform 0.3s ease;
     z-index: 100;
     text-align: left;
+    
+    /* Hile Sınırı: Kapağa doğru uzanan şeffaf bir görünmez köprü oluşturur. 
+       Böylece fare sağa geçerken boşluğa düşmez. */
+    border-left: 15px solid transparent; 
+    margin-left: 5px; /* Kapağa yaklaşma payı */
 }
 
-/* AKILLI DENGELİLEYİCİ: 
-   Satırın en sağındaki kapaklarda pencerenin ekran dışına taşmaması için 
-   son iki kapağın penceresini otomatik olarak SOL tarafta açar. */
+/* Satırın en sağındaki kapaklar için SOL tarafta açılma kuralı */
 .book:nth-child(3n) .book-intro,
 .book:last-child .book-intro {
     left: auto;
-    right: 105%; /* Sola açılması için */
-    transform: translateY(-50%) translateX(-15px);
+    right: 100%; 
+    transform: translateY(-50%) translateX(0);
+    border-left: none;
+    border-right: 15px solid transparent; /* Sol taraftaki köprü koruması */
+    margin-left: 0;
+    margin-right: 5px;
 }
 
 /* Başlık alanı */
@@ -527,11 +534,11 @@ h1 span {
     font-family: "Cormorant Garamond", serif !important;
     color: #f0f0f0;
     margin: 0;
-    font-size: 0.9rem; /* Okumayı kolaylaştırmak için yazı boyutunu hafifçe büyüttük */
+    font-size: 0.9rem; 
     line-height: 1.5;
 }
 
-/* İnce Kaydırma Çubuğu Tasarımı (Kutu içi kaydırmalar için som altın rengi) */
+/* İnce Kaydırma Çubuğu Tasarımı */
 .book-intro::-webkit-scrollbar {
     width: 4px;
 }
@@ -540,11 +547,11 @@ h1 span {
     border-radius: 2px;
 }
 
-/* MOUSE ÜZERİNE GELİNCE PENCEREYİ AÇ */
-.book:hover .book-intro {
+/* MOUSE KAPAK VEYA PENCERE ÜZERİNDEYKEN AÇIK TUT */
+.book:hover .book-intro,
+.book-intro:hover {
     opacity: 1;
-    /* Normalde sağa, yukarıdaki özel kuralda sola pürüzsüzce yaklaşır */
-    transform: translateY(-50%) translateX(0); 
+    pointer-events: auto; /* Yazıyı aşağı kaydırabilmeniz için dokunmayı aktif ediyoruz */
 }
 
 /* --- TELEFON (MOBİL) UYUMU --- */
@@ -553,6 +560,6 @@ h1 span {
         flex: 0 0 140px !important;
     }
     .book-intro {
-        display: none !important; /* Mobilde ekran dar olduğu için yan pencereleri gizli tutuyoruz */
+        display: none !important; 
     }
 }
