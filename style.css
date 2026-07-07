@@ -547,60 +547,91 @@ h1 span {
 ========================================================== */
 @media(max-width:700px) {
     .book { 
-        position: relative; 
+        position: relative; /* Balonun kapağın altına milimetrik hizalanması için */
         flex: 0 0 140px !important; 
         margin: 10px 12px;
     }
     
     .book-intro { 
-        position: fixed; /* Ekranın geneline göre sabitlendi */
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
+        position: absolute;
+        display: block !important;
         
-        /* Ekrana tam ortalama */
-        top: 50% !important;
+        /* Kapağın tam alt orta noktasından başlaması için matematiksel konumlandırma */
+        top: 102% !important; /* Kapağın bittiği çizginin 2px altı */
         left: 50% !important;
-        transform: translate(-50%, -50%) scale(0.9) !important;
+        right: auto !important;
+        bottom: auto !important;
         
-        /* Genişlik: Ekrandan taşmaması için %90 genişlik */
-        width: 90vw !important;
-        max-width: 350px !important;
-        height: 320px !important;
+        /* GENİŞLİK: Kapak genişliğinin tam 2 katı (140px * 2 = 280px) */
+        width: 280px !important;
+        max-width: 280px !important;
         
-        background: rgba(18, 13, 4, 0.98); 
-        border: 1px solid #bf953f;
-        border-radius: 12px;
-        padding: 20px;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 1), 0 0 20px rgba(212, 175, 55, 0.3);
+        /* YÜKSEKLİK: Kapak yüksekliğinin tam 1.5 katı (Yaklaşık 210px olan kapağın 1.5 katı = 315px) */
+        height: 315px !important;
+        max-height: 315px !important;
+        
+        /* Kutuyu kendi genişliğinin yarısı kadar sola kaydırarak kapağa tam alt-orta hizalıyoruz */
+        transform: translateX(-50%) scale(0.8) !important; 
+        
+        background: rgba(18, 13, 4, 0.99); 
+        border: 1px solid #bf953f; /* Som altın ince çerçeve */
+        border-radius: 10px;
+        padding: 15px; 
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.2);
         
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s, transform 0.3s;
-        z-index: 99999 !important; /* Diğer her şeyin en üstünde */
+        transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 9999;
+        
+        /* İçerikteki yazı ve butonun alt alta kusursuz hizalanması için esnek kutu */
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
     }
     
+    /* Mobil Yazı Alanı Kaydırma Çubuğu (Yazı uzunsa butonun üstünde asilce kayar) */
+    .book-intro p {
+        flex-grow: 1;
+        overflow-y: auto;
+        font-size: 0.82rem !important;
+        line-height: 1.5;
+        margin: 0;
+        padding-right: 4px;
+        color: #e5e5e5;
+    }
+    
+    .book-intro p::-webkit-scrollbar { width: 3px; }
+    .book-intro p::-webkit-scrollbar-thumb { background: #bf953f; }
+
+    /* Başlık mobil optimizasyonu */
+    .book-intro h4 {
+        font-size: 0.9rem !important;
+        margin: 0 0 8px 0 !important;
+        padding-bottom: 4px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    }
+    
+    /* Kapağa basıldığında hafifçe büyüyerek fırlama efekti */
     .book.active-pop .book-intro {
         opacity: 1 !important;
-        transform: translate(-50%, -50%) scale(1) !important;
+        transform: translateX(-50%) scale(1) !important;
         pointer-events: auto;
     }
-}
-/* Kapakların her zaman görünür olmasını garantiye al */
-.book {
-    opacity: 1 !important;
-    display: block !important;
-    visibility: visible !important;
-}
-
-/* Mobil için ortaya hizalama */
-@media(max-width:700px) {
-    .book-intro {
-        position: fixed;
-        top: 50% !important;
-        left: 50% !important;
-        transform: translate(-50%, -50%) !important;
-        z-index: 99999 !important;
-        width: 80vw !important;
+    
+    /* Dile Özel İndir Butonunun Premium Mobil Tasarımı */
+    .mobil-book-btn {
+        display: block;
+        margin-top: 10px;
+        padding: 10px;
+        text-align: center;
+        background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
+        color: #120d04 !important;
+        text-decoration: none;
+        font-family: 'Cinzel', serif;
+        font-weight: 700;
+        font-size: 0.8rem;
+        border-radius: 4px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 }
