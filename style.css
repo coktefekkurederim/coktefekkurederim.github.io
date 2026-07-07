@@ -546,65 +546,72 @@ h1 span {
    SADECE MOBİL İÇİN GEOMETRİK AÇIKLAMA BALONU TASARIMI
 ========================================================== */
 @media(max-width:700px) {
-    .book { 
-        position: relative; /* Balonun kapağın altına milimetrik hizalanması için */
-        flex: 0 0 140px !important; 
-        margin: 10px 12px;
+    /* 1. Mobil sitede kapakların 2'li sıra halinde alt alta dizilmesi */
+    .dock { 
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        max-width: 100%;
+        gap: 40px 20px;
+        padding: 30px 15px;
+        justify-items: center;
     }
     
+    .book { 
+        position: relative; 
+        width: 135px !important; 
+        height: auto;
+        margin: 0;
+        transform: none !important; 
+        transition: none !important; 
+    }
+
+    .book:hover, .book:active {
+        transform: none !important;
+        z-index: 11 !important;
+    }
+
+    /* 2. Kapak boyutuna göre milimetrik oranlanmış Açıklama Kutusu */
     .book-intro { 
         position: absolute;
-        display: block !important;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
         
-        /* Kapağın tam alt orta noktasından başlaması için matematiksel konumlandırma */
-        top: 102% !important; /* Kapağın bittiği çizginin 2px altı */
+        /* Kapak görselinin ortasından başlayarak konumlandırma */
+        top: 50% !important; 
         left: 50% !important;
         right: auto !important;
         bottom: auto !important;
         
-        /* GENİŞLİK: Kapak genişliğinin tam 2 katı (140px * 2 = 280px) */
-        width: 280px !important;
-        max-width: 280px !important;
+        /* BOYUTLAR: Yanlamasına 2 kapak genişliğinde, yukarıya doğru 1.5 kapak yüksekliğinde */
+        width: 270px !important;       /* 135px * 2 = 270px */
+        height: 300px !important;      /* Yaklaşık 200px kapak yüksekliğinin 1.5 katı = 300px */
+        max-width: 270px !important;
+        max-height: 300px !important;
         
-        /* YÜKSEKLİK: Kapak yüksekliğinin tam 1.5 katı (Yaklaşık 210px olan kapağın 1.5 katı = 315px) */
-        height: 315px !important;
-        max-height: 315px !important;
-        
-        /* Kutuyu kendi genişliğinin yarısı kadar sola kaydırarak kapağa tam alt-orta hizalıyoruz */
-        transform: translateX(-50%) scale(0.8) !important; 
+        /* Tam ortalama ayarı ve açılış efekti */
+        transform: translate(-50%, -50%) scale(0.8) !important; 
         
         background: rgba(18, 13, 4, 0.99); 
-        border: 1px solid #bf953f; /* Som altın ince çerçeve */
+        border: 1px solid #bf953f; 
         border-radius: 10px;
         padding: 15px; 
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.2);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.95), 0 0 25px rgba(212, 175, 55, 0.3);
         
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 9999;
-        
-        /* İçerikteki yazı ve butonun alt alta kusursuz hizalanması için esnek kutu */
-        display: flex !important;
-        flex-direction: column;
-        justify-content: space-between;
+        z-index: 99999 !important;
     }
     
-    /* Mobil Yazı Alanı Kaydırma Çubuğu (Yazı uzunsa butonun üstünde asilce kayar) */
-    .book-intro p {
-        flex-grow: 1;
-        overflow-y: auto;
-        font-size: 0.82rem !important;
-        line-height: 1.5;
-        margin: 0;
-        padding-right: 4px;
-        color: #e5e5e5;
+    /* Aktif kapakta pencerenin fırlayarak açılması */
+    .book.active-pop .book-intro {
+        opacity: 1 !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        pointer-events: auto;
     }
-    
-    .book-intro p::-webkit-scrollbar { width: 3px; }
-    .book-intro p::-webkit-scrollbar-thumb { background: #bf953f; }
 
-    /* Başlık mobil optimizasyonu */
+    /* Başlık Alanı */
     .book-intro h4 {
         font-size: 0.9rem !important;
         margin: 0 0 8px 0 !important;
@@ -612,17 +619,25 @@ h1 span {
         border-bottom: 1px solid rgba(212, 175, 55, 0.2);
     }
     
-    /* Kapağa basıldığında hafifçe büyüyerek fırlama efekti */
-    .book.active-pop .book-intro {
-        opacity: 1 !important;
-        transform: translateX(-50%) scale(1) !important;
-        pointer-events: auto;
+    /* Mobil Yazı Alanı (Butonun üstünde asilce kayar) */
+    .book-intro p {
+        flex-grow: 1;
+        overflow-y: auto;
+        font-size: 0.82rem !important;
+        line-height: 1.5;
+        margin: 0 0 10px 0;
+        padding-right: 4px;
+        color: #e5e5e5;
     }
     
-    /* Dile Özel İndir Butonunun Premium Mobil Tasarımı */
+    .book-intro p::-webkit-scrollbar { width: 3px; }
+    .book-intro p::-webkit-scrollbar-thumb { background: #bf953f; }
+    
+    /* 3. Sadece Mobil Özel İndirme Butonu Tasarımı (Yazının BAŞINDA durması için flex-order) */
     .mobil-book-btn {
+        order: -1; /* Butonu kutunun en tepesine (başlangıcına) taşır */
         display: block;
-        margin-top: 10px;
+        margin-bottom: 12px; /* Yazı ile arasına mesafe */
         padding: 10px;
         text-align: center;
         background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
@@ -633,5 +648,6 @@ h1 span {
         font-size: 0.8rem;
         border-radius: 4px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        letter-spacing: 0.5px;
     }
 }
