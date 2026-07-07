@@ -254,8 +254,19 @@ footer {
 }
 
 @media(max-width:700px){
-    .dock { gap: 10px; padding-top: 80px; }
-    .book { width: 95px; }
+    /* Telefonlarda kitapların ekrana sığması ve taşmaması için düzenleme */
+    .dock { 
+        justify-content: center; 
+        gap: 8px; 
+        padding-top: 60px; /* Yukarı büyüme alanı mobil için optimize edildi */
+        padding-bottom: 30px;
+        overflow: visible !important;
+    }
+    
+    /* Telefonlar için ideal kitap genişliği */
+    .book { 
+        width: 55px; /* Ekran genişliğine göre en ideal mobil boyuttur */
+    }
 }
 
 /* Çok Dilli Açıklama Alanı Düzenlemesi */
