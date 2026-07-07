@@ -422,3 +422,46 @@ h1 span {
         right: 2px;         /* Milimetrik sağ hizalama */
     }
 }
+/* ==========================================================
+   KAPAKLAR İÇİN SOM ALTIN VERSİYON KUTUSU
+========================================================== */
+
+/* Versiyon kutusunun kapak sağ altına milimetrik yerleşimi */
+.book-version {
+    position: absolute;
+    bottom: -12px;       /* Kapağın hemen alt sınırına taşır */
+    right: -8px;         /* Kapağın hafifçe sağ dışına taşır (Şık bir derinlik için) */
+    z-index: 15;         /* Kapağın ve gölgesinin üstünde görünmesi için */
+    
+    font-family: "Cinzel", serif !important;
+    font-size: 0.75rem;   /* Kapak boyutuna göre asil ve zarif durması için */
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #120d04;      /* Som altın kartın içindeki koyu yazı rengi */
+    
+    /* Başlıktaki som altın ve metalik yansıma efektinin birebir aynısı */
+    background: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+    
+    padding: 2px 7px;
+    border-radius: 3px;
+    border: 1px solid #f4df8a;
+    
+    /* Altın ışık huzmesi ve kapak gölgesiyle uyumlu derinlik */
+    box-shadow: 
+        0 0 10px rgba(255, 230, 110, 0.3), 
+        0 3px 6px rgba(0, 0, 0, 0.4);
+        
+    white-space: nowrap;
+    line-height: 1;
+    pointer-events: none; /* Farenin kapağı algılamasını engellememesi için */
+}
+
+/* --- TELEFON (MOBİL) UYUMU --- */
+@media(max-width:700px){
+    .book-version {
+        font-size: 0.65rem; /* Mobilde kapaklar küçüldüğü için kutuyu da küçültüyoruz */
+        padding: 1px 5px;
+        bottom: -10px;
+        right: -4px;
+    }
+}
