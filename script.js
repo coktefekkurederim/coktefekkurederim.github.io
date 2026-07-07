@@ -52,13 +52,41 @@ document.addEventListener("DOMContentLoaded", () => {
         books.forEach(book => {
             const intro = book.querySelector('.book-intro');
             const instagramUrl = book.getAttribute('href') || 'https://www.instagram.com/coktefekkurederim/';
-            
+            const lang = book.querySelector("img").alt;
+
+let buttonText = "Ücretsiz İndir →";
+
+switch(lang){
+    case "Türkçe":
+        buttonText = "Ücretsiz İndir →";
+        break;
+
+    case "English":
+        buttonText = "Download Free →";
+        break;
+
+    case "Español":
+        buttonText = "Descargar Gratis →";
+        break;
+
+    case "Русский":
+        buttonText = "Скачать бесплатно →";
+        break;
+
+    case "Deutsch":
+        buttonText = "Kostenlos herunterladen →";
+        break;
+
+    case "Português":
+        buttonText = "Baixar Grátis →";
+        break;
+}
             if (intro && !intro.querySelector('.mobil-book-btn')) {
                 const btn = document.createElement('a');
                 btn.href = instagramUrl;
                 btn.target = "_blank";
                 btn.className = "mobil-book-btn";
-                btn.innerText = "Instagram'da İncele →";
+                btn.innerText = buttonText;
                 
                 // Butonun asil stili (Altın çerçeve, premium karanlık tema)
                 btn.style.display = "block";
