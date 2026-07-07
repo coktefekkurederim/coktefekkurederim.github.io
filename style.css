@@ -27,3 +27,20 @@
     filter .25s;
 
 }
+h1{
+
+    font-family: "Cinzel", serif;
+
+    font-size:72px;
+
+    letter-spacing:6px;
+
+    font-weight:600;
+
+    color:#f0d37a;
+
+    text-shadow:
+        0 0 10px rgba(212,175,55,.35),
+        0 0 25px rgba(212,175,55,.20);
+
+}
