@@ -466,10 +466,8 @@ h1 span {
     }
 }
 /* ==========================================================
-   KESİNTİSİZ YAN PANEL GİRİŞ MOTORU (SABİTLENMİŞ FARE)
+   GELİŞMİŞ YAN PANEL GİRİŞ MOTORU (JS DESTEKLİ)
 ========================================================== */
-
-/* Kapakların temel boyutu ve hizalama hazırlığı */
 .book {
     position: relative;
     flex: 0 0 175px !important;
@@ -477,12 +475,11 @@ h1 span {
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Kitap Giriş Penceresinin Yeni Sabit Tasarımı */
 .book-intro {
     position: absolute;
     top: 50%;
-    left: 100%; /* Aradaki boşluğu kapatmak için tam sınıra (100%) çektik */
-    transform: translateY(-50%) translateX(0); /* İlk konumda hazır bekliyor */
+    left: 105%;
+    transform: translateY(-50%);
     
     width: 340px; 
     max-height: 280px; 
@@ -495,30 +492,26 @@ h1 span {
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.25);
     
     opacity: 0;
-    pointer-events: none; /* İlk başta farenin tıklamasını engelliyoruz */
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
     z-index: 100;
     text-align: left;
-    
-    /* Hile Sınırı: Kapağa doğru uzanan şeffaf bir görünmez köprü oluşturur. 
-       Böylece fare sağa geçerken boşluğa düşmez. */
-    border-left: 15px solid transparent; 
-    margin-left: 5px; /* Kapağa yaklaşma payı */
 }
 
-/* Satırın en sağındaki kapaklar için SOL tarafta açılma kuralı */
+/* Sağ taraftaki kapaklar için SOLDA açılma kuralı */
 .book:nth-child(3n) .book-intro,
 .book:last-child .book-intro {
     left: auto;
-    right: 100%; 
-    transform: translateY(-50%) translateX(0);
-    border-left: none;
-    border-right: 15px solid transparent; /* Sol taraftaki köprü koruması */
-    margin-left: 0;
-    margin-right: 5px;
+    right: 105%;
 }
 
-/* Başlık alanı */
+/* CSS Tıklama/Hover Tetikleyicilerini Kapatıyoruz (JS Yönetecek) */
+.book.active-pop .book-intro {
+    opacity: 1;
+    pointer-events: auto; /* Yazıyı aşağı kaydırabilmeniz için */
+}
+
+/* Başlık ve Metin Tasarımları */
 .book-intro h4 {
     font-family: "Cinzel", serif !important;
     color: #fcf6ba;
@@ -529,7 +522,6 @@ h1 span {
     padding-bottom: 6px;
 }
 
-/* Giriş metni alanı */
 .book-intro p {
     font-family: "Cormorant Garamond", serif !important;
     color: #f0f0f0;
@@ -547,19 +539,7 @@ h1 span {
     border-radius: 2px;
 }
 
-/* MOUSE KAPAK VEYA PENCERE ÜZERİNDEYKEN AÇIK TUT */
-.book:hover .book-intro,
-.book-intro:hover {
-    opacity: 1;
-    pointer-events: auto; /* Yazıyı aşağı kaydırabilmeniz için dokunmayı aktif ediyoruz */
-}
-
-/* --- TELEFON (MOBİL) UYUMU --- */
 @media(max-width:700px){
-    .book {
-        flex: 0 0 140px !important;
-    }
-    .book-intro {
-        display: none !important; 
-    }
+    .book { flex: 0 0 140px !important; }
+    .book-intro { display: none !important; }
 }
