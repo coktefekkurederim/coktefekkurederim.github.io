@@ -257,3 +257,24 @@ footer {
     .dock { gap: 10px; padding-top: 80px; }
     .book { width: 95px; }
 }
+
+/* Çok Dilli Açıklama Alanı Düzenlemesi */
+.subtitle {
+    max-width: 850px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Cümlelerin arasındaki mesafeyi ayarlar */
+}
+
+.lang-text {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #e3decb;
+    opacity: 0.9;
+}
+
+.lang-text strong {
+    color: var(--gold2); /* Instagram kullanıcı adını altın rengi yapar */
+}
