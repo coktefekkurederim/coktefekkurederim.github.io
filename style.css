@@ -601,22 +601,19 @@ h1 span {
     z-index:999999;
 }
 
-/* SOL SÜTUN */
+/* TÜM KAPAKLAR ORTAYA AÇILSIN */
+.book .book-intro{
+    top: 50% !important;
+    left: 50% !important;
+    right: auto !important;
 
-.book:nth-child(odd) .book-intro{
-
-    left:105% !important;
-    right:auto !important;
-
+    transform: translate(-50%, -50%) scale(.9) !important;
 }
 
-/* SAĞ SÜTUN */
-
-.book:nth-child(even) .book-intro{
-
-    right:105% !important;
-    left:auto !important;
-
+.book.active-pop .book-intro{
+    opacity: 1 !important;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1) !important;
 }
 
 .book.active-pop{
