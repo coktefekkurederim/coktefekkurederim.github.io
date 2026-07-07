@@ -3,7 +3,7 @@
 // ==========================================================
 const books = document.querySelectorAll('.book');
 const MAX_SCALE = 1.25;
-let activeBook = null; // Şu an aktif olan (açık) kitabı hafızada tutar
+let activeBook = null;
 
 // MÜZİK MOTORU
 const musicBtn = document.querySelector('.music-btn');
@@ -45,22 +45,50 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }, 100 * (index + 1));
     });
+
+    // 📱 MOBİL BUTON ENJEKSİYONU: 
+    // Her kitabın içindeki açıklama paneline otomatik olarak şık bir gitme butonu ekler.
+    if (window.innerWidth <= 700) {
+        books.forEach(book => {
+            const intro = book.querySelector('.book-intro');
+            const instagramUrl = book.getAttribute('href') || 'https://www.instagram.com/coktefekkurederim/';
+            
+            if (intro && !intro.querySelector('.mobil-book-btn')) {
+                const btn = document.createElement('a');
+                btn.href = instagramUrl;
+                btn.target = "_blank";
+                btn.className = "mobil-book-btn";
+                btn.innerText = "Instagram'da İncele →";
+                
+                // Butonun asil stili (Altın çerçeve, premium karanlık tema)
+                btn.style.display = "block";
+                btn.style.marginTop = "15px";
+                btn.style.padding = "10px 15px";
+                btn.style.textAlign = "center";
+                btn.style.background = "linear-gradient(135deg, #bf953f 0%, #b38728 100%)";
+                btn.style.color = "#120d04";
+                btn.style.textDecoration = "none";
+                btn.style.fontFamily = "'Cinzel', serif";
+                btn.style.fontWeight = "700";
+                btn.style.fontSize = "0.85rem";
+                btn.style.borderRadius = "5px";
+                btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
+                
+                intro.appendChild(btn);
+            }
+        });
+    }
 });
 
 // ==========================================================
-// GELİŞMİŞ FARE HAREKET VE ARKA PLAN KORUMA MOTORU
+// GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
 // ==========================================================
 function handleMove(e) {
-    if (window.innerWidth <= 700) {
-        resetEffects();
-        return;
-    }
+    if (window.innerWidth <= 700) return; // Mobilde mouse takibini tamamen kapat
 
     const clientX = e.clientX;
     const clientY = e.clientY;
 
-    // 🛡️ KRİTİK KORUMA: Eğer fare şu an bir açıklama kutusunun veya içindeki yazının üzerindeyse,
-    // arkadaki kapakların tetiklenmesini tamamen engelle ve mevcut pencereyi açık tut.
     if (e.target.closest('.book-intro')) {
         return; 
     }
@@ -69,8 +97,6 @@ function handleMove(e) {
 
     books.forEach(book => {
         const r = book.getBoundingClientRect();
-
-        // Farenin sadece kapak görselinin üzerinde olup olmadığını kontrol et
         const isMouseOverBook = (
             clientX >= r.left && 
             clientX <= r.right && 
@@ -81,7 +107,6 @@ function handleMove(e) {
         if (isMouseOverBook) {
             insideAnyBook = true;
             
-            // Eğer yeni bir kapağa geçildiyse eskisini pürüzsüzce kapat
             if (activeBook && activeBook !== book) {
                 activeBook.classList.remove('active-pop');
                 activeBook.style.transform = "translateY(0) scale(1) rotateX(0) rotateY(0)";
@@ -92,7 +117,6 @@ function handleMove(e) {
             activeBook = book;
             book.classList.add('active-pop');
 
-            // 3D Esneme Hesaplamaları
             const mouseX = clientX - r.left;
             const mouseY = clientY - r.top;
             const rx = -(mouseY - r.height / 2) / 12;
@@ -110,10 +134,46 @@ function handleMove(e) {
         }
     });
 
-    // Eğer fare hiçbir kapağın üzerinde değilse ve bir pencerenin içinde de değilse her şeyi sıfırla
     if (!insideAnyBook && activeBook) {
         resetEffects();
     }
+}
+
+// 📱 MOBİL İÇİN AKILLI DOKUNMA YÖNETİMİ
+if (window.innerWidth <= 700) {
+    books.forEach(book => {
+        book.addEventListener('click', (e) => {
+            // Eğer doğrudan enjekte ettiğimiz butona tıklandıysa Instagram'a gitmesine izin ver
+            if (e.target.classList.contains('mobil-book-btn')) {
+                return;
+            }
+            
+            // Yoksa kapağa ilk tıklamada linki durdur ve alt paneli aç
+            e.preventDefault(); 
+            
+            if (book.classList.contains('active-pop')) {
+                // Eğer zaten açıksa ve tekrar kapağa dokunduysa kapat
+                book.classList.remove('active-pop');
+                activeBook = null;
+            } else {
+                // Başka açık panel varsa kapat, yenisini aç
+                books.forEach(b => b.classList.remove('active-pop'));
+                book.classList.add('active-pop');
+                activeBook = book;
+            }
+        });
+    });
+
+    // Ekranda boş bir yere dokunulduğunda paneli kapatma koruması
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.book')) {
+            books.forEach(b => b.classList.remove('active-pop'));
+            activeBook = null;
+        }
+    });
+} else {
+    window.addEventListener('mousemove', handleMove);
+    window.addEventListener('mouseleave', resetEffects);
 }
 
 function resetEffects() {
@@ -129,7 +189,3 @@ function resetEffects() {
     });
     activeBook = null;
 }
-
-// Fare hareketlerini ve sayfadan ayrılma durumunu dinle
-window.addEventListener('mousemove', handleMove);
-window.addEventListener('mouseleave', resetEffects);
