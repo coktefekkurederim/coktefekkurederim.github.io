@@ -134,3 +134,38 @@ function createGoldDust() {
 }
 
 window.addEventListener("DOMContentLoaded", createGoldDust);
+
+/* ==========================================================
+   ARKA PLAN MÜZİK YÖNETİM SİSTEMİ
+========================================================== */
+function initMusic() {
+    const music = document.getElementById("bgMusic");
+    const button = document.getElementById("musicToggle");
+    const icon = button.querySelector(".music-icon");
+    const text = button.querySelector(".music-text");
+
+    if (!music || !button) return;
+
+    // Ses seviyesini arkada hafif tatlı bir fon müziği olacak şekilde %30'a ayarlıyoruz
+    music.volume = 0.3; 
+
+    button.addEventListener("click", () => {
+        if (music.paused) {
+            music.play().then(() => {
+                text.textContent = "Müziği Kapat";
+                icon.textContent = "⏸️";
+                button.style.borderColor = "#fff"; // Çalarken buton rengi hafif değişsin
+            }).catch(error => {
+                console.log("Müzik çalma tarayıcı engeline takıldı:", error);
+            });
+        } else {
+            music.pause();
+            text.textContent = "Müziği Aç";
+            icon.textContent = "🎵";
+            button.style.borderColor = "var(--gold2)";
+        }
+    });
+}
+
+// Sayfa yüklendiğinde müzik motorunu hazırla
+window.addEventListener("DOMContentLoaded", initMusic);
