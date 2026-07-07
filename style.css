@@ -553,7 +553,7 @@ h1 span {
     }
     
     .book-intro { 
-        position: fixed;
+        position: absolute;
         display: block !important;
         
         /* Kapağın tam alt orta noktasından başlaması için matematiksel konumlandırma */
@@ -605,6 +605,7 @@ h1 span {
     .book-intro p::-webkit-scrollbar-thumb { background: #bf953f; }
 
     /* Başlık mobil optimizasyonu */
+    
     .book-intro h4 {
         font-size: 0.9rem !important;
         margin: 0 0 8px 0 !important;
@@ -613,12 +614,18 @@ h1 span {
     }
     
     /* Kapağa basıldığında hafifçe büyüyerek fırlama efekti */
-    .book.active-pop .book-intro {
-        opacity: 1 !important;
+   .book.active-pop{
+    z-index:999999 !important;
+}
+    .book.active-pop .book-intro{
+    z-index:999999 !important;
         transform: translateX(-50%) scale(1) !important;
         pointer-events: auto;
     }
     
+
+
+}
     /* Dile Özel İndir Butonunun Premium Mobil Tasarımı */
     .mobil-book-btn {
         display: block;
