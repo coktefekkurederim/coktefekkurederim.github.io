@@ -221,18 +221,22 @@ footer {
 
 /* --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- */
 @media(max-width:700px){
-    .dock { 
-        max-width: 360px;
-        gap: 35px 20px;
-        padding: 40px 10px;
-    }
-    
-    .book { 
-        flex: 0 0 135px;
-        width: 135px !important;
-        transform: none !important; 
-        transition: none !important; 
-    }
+
+.dock{
+    display:grid !important;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    max-width:320px;
+    margin:auto;
+    justify-items:center;
+}
+
+.book{
+    width:140px !important;
+    margin:0;
+}
+
+}
 
     .book:hover, .book:active {
         transform: none !important;
