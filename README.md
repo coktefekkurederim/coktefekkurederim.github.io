@@ -1,2 +1,0 @@
-# ÇOK TEFEKKÜR EDERİM
-
