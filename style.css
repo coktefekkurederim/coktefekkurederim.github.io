@@ -542,7 +542,59 @@ h1 span {
     border-radius: 2px;
 }
 
+/* ==========================================================
+   AKILLI TELEFON (MOBİL) GİRİŞ PENCERESİ UYUMU
+========================================================== */
 @media(max-width:700px){
-    .book { flex: 0 0 140px !important; }
-    .book-intro { display: none !important; }
+    /* Kapakların mobildeki boyutu */
+    .book {
+        flex: 0 0 140px !important;
+        margin: 10px;
+    }
+
+    /* Mobilde açıklama penceresini serbest bırakıyoruz ve alt satıra şıkça hizalıyoruz */
+    .book-intro {
+        position: fixed; /* Ekranın alt kısmına sabitlenmesi için */
+        bottom: 0;
+        left: 0 !important;
+        right: 0 !important;
+        top: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        max-height: 40vh !important; /* Ekranın en fazla %40'ını kaplasın */
+        border-radius: 12px 12px 0 0; /* Sadece üst köşeleri yuvarlatılmış asil bir panel */
+        border: none;
+        border-top: 2px solid #bf953f; /* Üst sınırda som altın çizgi */
+        background: rgba(18, 13, 4, 0.98);
+        padding: 20px;
+        box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.9);
+        transform: translateY(100%) !important; /* İlk başta ekranın altında gizli dursun */
+        transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        z-index: 9999; /* Her şeyin en üstünde görünmesi için */
+    }
+
+    /* Sağdaki kapaklar için yazdığımız sol kuralını mobilde sıfırlıyoruz */
+    .book:nth-child(3n) .book-intro,
+    .book:last-child .book-intro {
+        right: 0 !important;
+        left: 0 !important;
+    }
+
+    /* Mobilde kapağa dokunulduğunda panel aşağıdan yukarıya asilce kayarak açılsın */
+    .book.active-pop .book-intro {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        pointer-events: auto;
+    }
+
+    /* Mobilde yazıların daha rahat okunması için boyut ayarları */
+    .book-intro h4 {
+        font-size: 1rem;
+        margin-bottom: 8px;
+    }
+
+    .book-intro p {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
 }
