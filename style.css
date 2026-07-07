@@ -118,18 +118,6 @@ h2 {
     letter-spacing: 4px;
 }
 
-.subtitle {
-    max-width: 800px;
-    margin: 30px auto;
-    line-height: 1.7;
-    font-size: 1.1rem;
-    color: #d1ca74;
-    opacity: 0.85;
-}
-
-/* ==========================================================
-   YENİ NESİL AKILLI DOCK ALANI (PC'DE 4'LÜ, MOBİLDE 2'Lİ)
-========================================================== */
 /* ==========================================================
    İZOLE DOCK VE BAĞIMSIZ KAPAK TASARIMI
 ========================================================== */
@@ -169,7 +157,7 @@ h2 {
     display: block;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-/* Fare hareket ederken background animasyonunu yumuşatıyoruz */
+    /* Fare hareket ederken background animasyonunu yumuşatıyoruz */
     transition: filter 0.25s ease, background .25s; 
     overflow: hidden;
     will-change: filter, background;
@@ -288,6 +276,8 @@ footer {
 }
 
 .lang-text {
+    display: flex;
+    align-items: center; /* Bayrak ve yazıyı dikeyde tam ortalar */
     margin: 0;
     font-size: 1.05rem;
     line-height: 1.5;
@@ -308,16 +298,6 @@ footer {
     border-radius: 3px;  /* Premium durması için hafif yuvarlak köşeler */
     box-shadow: 0 2px 5px rgba(0,0,0,0.3); /* Arkadaki koyuluğa uyması için hafif gölge */
     display: inline-block;
-}
-
-.lang-text {
-    display: flex;
-    align-items: center; /* Bayrak ve yazıyı dikeyde tam ortalar */
-    margin: 0;
-    font-size: 1.05rem;
-    line-height: 1.5;
-    color: #e3decb;
-    opacity: 0.9;
 }
 
 /* Premium Müzik Kontrol Butonu */
@@ -362,22 +342,18 @@ footer {
 /* ==========================================================
    SİHİRLİ GÖKTEN İNİŞ VE IŞIK SÜZMESİ ANİMASYONU
 ========================================================== */
-
-/* Sayfa ilk açıldığında kapakların başlangıç durumunu hazırlıyoruz */
 .book {
     opacity: 0;
     transform: translateY(-100px) scale(0.7) rotateX(20deg); /* Yukarıda, küçük ve eğik başlasın */
     animation: magicDrop 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
 }
 
-/* Sihirli düşüş ve parlama animasyon motoru */
 @keyframes magicDrop {
     0% {
         opacity: 0;
         transform: translateY(-120px) scale(0.6) rotateX(30deg);
-        /* İniş anında arkada büyülü bir altın ışık süzmesi patlaması */
         box-shadow: 0 -50px 100px rgba(212, 175, 55, 0.4), 0 0 20px rgba(212, 175, 55, 0.2);
-        filter: brightness(2) blur(1px); /* İnene kadar hafif parlasın ve netleşsin */
+        filter: brightness(2) blur(1px);
     }
     60% {
         opacity: 1;
@@ -386,15 +362,12 @@ footer {
     }
     100% {
         opacity: 1;
-        /* Son aşamada bir önceki adımda sabitlediğimiz transform değerine pürüzsüzce oturtuyoruz */
         transform: translateY(0) scale(1) rotateX(0) rotateY(0);
         box-shadow: 0 15px 35px rgba(0,0,0,0.5);
         filter: brightness(1);
     }
 }
 
-/* KAPAKLARIN SIRAYLA (GECİKMELİ) İNMESİ (Şelale Efekti) */
-/* Her kitap bir öncekinden 0.15 saniye sonra inmeye başlar, böylece büyü sırayla akar */
 .book:nth-child(1) { animation-delay: 0.1s; }
 .book:nth-child(2) { animation-delay: 0.25s; }
 .book:nth-child(3) { animation-delay: 0.4s; }
@@ -402,9 +375,6 @@ footer {
 .book:nth-child(5) { animation-delay: 0.7s; }
 .book:nth-child(6) { animation-delay: 0.85s; }
 
-
-/* --- TELEFONLARDA ANİMASYON UYUMU --- */
-/* Mobilde çakışma olmaması için animasyon bittiği an mobilin o temiz sabit moduna kilitliyoruz */
 @media(max-width:700px){
     .book {
         animation: magicDropMobile 1.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
@@ -427,8 +397,64 @@ footer {
     }
     100% {
         opacity: 1;
-        transform: none !important; /* Mobilde animasyon bitince büyüme/dönme kilitlensin */
+        transform: none !important; 
         box-shadow: 0 10px 25px rgba(0,0,0,0.5);
         filter: brightness(1);
+    }
+}
+
+/* ==========================================================
+   YENİ EKLENEN: 2'Lİ ALT ALTA AYRI KUTULU PAYLAŞIM ALANI
+========================================================== */
+.share-grid-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr); /* Yan yana 2 şık kutu düzeni */
+    gap: 25px 30px; 
+    position: relative;
+    z-index: 5;
+}
+
+.share-card {
+    background: rgba(18, 18, 18, 0.6);
+    border: 1px solid var(--gold2);
+    border-radius: 12px;
+    padding: 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.share-card:hover {
+    border-color: #ffffff;
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.2);
+}
+
+.share-text {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #e3decb;
+    opacity: 0.95;
+    text-align: left;
+}
+
+@media(max-width:700px){
+    .share-grid-container {
+        grid-template-columns: 1fr; /* Mobilde alt alta tekli sıralama */
+        gap: 20px;
+        margin: 30px auto;
+    }
+    .share-card {
+        padding: 20px;
+    }
+    .share-text {
+        font-size: 0.88rem;
     }
 }
