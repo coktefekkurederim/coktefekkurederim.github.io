@@ -130,7 +130,9 @@ h2 {
     transform-style: preserve-3d;
     perspective: 1000px;
     z-index: 11;
-    transition: z-index 0s;
+    /* EKRAN KARTINI DEVREYE SOKAN KRİTİK AYARLAR */
+    will-change: transform;
+    transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 /* Üzerine gelinen kitap her şeyin üstüne çıksın */
@@ -143,8 +145,10 @@ h2 {
     display: block;
     border-radius: 10px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    transition: filter .25s, background .25s;
+/* Fare hareket ederken background animasyonunu yumuşatıyoruz */
+    transition: filter 0.3s ease, background-position 0.1s linear;
     overflow: hidden;
+    will-change: filter, background;
 }
 
 /* SOSYAL MEDYA SİMGELERİ */
