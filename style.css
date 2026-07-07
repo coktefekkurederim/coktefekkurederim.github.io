@@ -466,7 +466,7 @@ h1 span {
     }
 }
 /* ==========================================================
-   GELİŞMİŞ YAN PANEL GİRİŞ MOTORU (JS DESTEKLİ)
+   MİLİMETRİK ÇAKIŞMALI YAN PANEL GİRİŞ MOTORU (1PX BİNDİRME)
 ========================================================== */
 .book {
     position: relative;
@@ -478,7 +478,8 @@ h1 span {
 .book-intro {
     position: absolute;
     top: 50%;
-    left: 105%;
+    /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
+    left: 99%; 
     transform: translateY(-50%);
     
     width: 340px; 
@@ -498,20 +499,21 @@ h1 span {
     text-align: left;
 }
 
-/* Sağ taraftaki kapaklar için SOLDA açılma kuralı */
+/* Satırın en sağındaki kapaklar için SOLDA (1px bindirmeli) açılma kuralı */
 .book:nth-child(3n) .book-intro,
 .book:last-child .book-intro {
     left: auto;
-    right: 105%;
+    /* 105%'ten 99%'a çekerek sol taraftaki bindirmeyi de garantiye aldık */
+    right: 99%; 
 }
 
-/* CSS Tıklama/Hover Tetikleyicilerini Kapatıyoruz (JS Yönetecek) */
+/* Aktiflik Sınıfı (Mevcut JS motorunuzla tam uyumlu) */
 .book.active-pop .book-intro {
     opacity: 1;
-    pointer-events: auto; /* Yazıyı aşağı kaydırabilmeniz için */
+    pointer-events: auto; 
 }
 
-/* Başlık ve Metin Tasarımları */
+/* Başlık alanı */
 .book-intro h4 {
     font-family: "Cinzel", serif !important;
     color: #fcf6ba;
@@ -522,6 +524,7 @@ h1 span {
     padding-bottom: 6px;
 }
 
+/* Giriş metni alanı */
 .book-intro p {
     font-family: "Cormorant Garamond", serif !important;
     color: #f0f0f0;
