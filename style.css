@@ -550,71 +550,22 @@ h1 span {
         position: relative; 
         flex: 0 0 140px !important; 
         margin: 10px 12px;
-        z-index: 10; /* Temel katman */
-        transition: none !important;
-    }
-
-    /* Aktif olan kitabı en üste çıkarıyoruz */
-    .book.active-pop {
-        z-index: 9999 !important;
-    }
-    
-    .book-intro { 
-        position: absolute;
-        display: block !important;
-        top: 105% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
-        left: 50% !important;
-        width: 280px !important;
-        max-height: 250px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
-        transform: translateX(-50%) scale(0.8) !important; 
-        
-        background: rgba(18, 13, 4, 0.99); 
-        border: 1px solid #bf953f;
-        border-radius: 10px;
-        padding: 15px; 
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.9), 0 0 15px rgba(212, 175, 55, 0.2);
-        
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        z-index: 99999 !important; /* En üst katman garantisi */
-    }
-
-    /* Aktifleşme anı */
-    .book.active-pop .book-intro {
-        opacity: 1 !important;
-        transform: translateX(-50%) scale(1) !important;
-        pointer-events: auto;
-    }
-
-    /* İçerik düzenlemeleri */
-    .book-intro p {
-        font-size: 0.85rem !important;
-        line-height: 1.5;
-    }
-/* Kitap Kapağı Temel Ayarları */
-    .book { 
-        position: relative; 
-        flex: 0 0 140px !important; 
-        margin: 10px 12px;
         z-index: 10;
         transition: none !important;
     }
 
-    .book.active-pop {
-        z-index: 9999 !important;
-    }
-    
-    /* Açıklama Kutusu (Flex Yapısı) */
+    .book.active-pop { z-index: 9999 !important; }
+
+    /* Mobilde açıklama kutusu düzeni */
     .book-intro { 
+        display: flex !important; /* Mobilde flex yapıyoruz */
+        flex-direction: column;
         position: absolute;
-        display: flex !important; 
-        flex-direction: column; /* İçeriği dikey dizer */
         top: 105% !important;
         left: 50% !important;
         width: 280px !important;
-        height: 315px !important; 
-        transform: translateX(-50%) scale(0.8) !important;
+        height: 315px !important;
+        transform: translateX(-50%) scale(1) !important; /* Scale 1 yaptık */
         z-index: 99999 !important;
         background: rgba(18, 13, 4, 0.99);
         border: 1px solid #bf953f;
@@ -622,47 +573,39 @@ h1 span {
         padding: 15px;
         opacity: 0;
         pointer-events: none;
-        transition: opacity 0.3s ease, transform 0.3s;
     }
 
-    /* Başlık ve Butonun sabit kalması için */
-    .book-intro h4, 
-    .mobil-book-btn {
-        flex-shrink: 0; 
+    .book.active-pop .book-intro {
+        opacity: 1 !important;
+        pointer-events: auto;
     }
 
-    /* Buton Tasarımı (Başlığın Hemen Altı) */
+    /* Mobilde başlık ve butonun kaymaması için */
+    .book-intro h4, .mobil-book-btn { flex-shrink: 0; }
+
+    /* Butonun masaüstünde görünmemesi, mobilde sabitlenmesi */
     .mobil-book-btn {
-        display: block;
-        margin-bottom: 15px;
+        display: block !important;
+        margin-bottom: 10px;
         padding: 10px;
         text-align: center;
         background: linear-gradient(135deg, #bf953f 0%, #b38728 100%);
         color: #120d04 !important;
-        text-decoration: none;
         font-family: 'Cinzel', serif;
         font-weight: 700;
-        font-size: 0.85rem;
         border-radius: 4px;
-        cursor: pointer;
     }
 
-    /* Metin alanı (Burada kaydırma gerçekleşecek) */
     .book-intro p {
-        flex-grow: 1; 
+        flex-grow: 1;
         overflow-y: auto;
         font-size: 0.82rem !important;
-        line-height: 1.5;
-        color: #e5e5e5;
-        padding-right: 5px;
     }
+}
 
-    /* Aktifleşme anı */
-    .book.active-pop .book-intro {
-        opacity: 1 !important;
-        transform: translateX(-50%) scale(1) !important;
-        pointer-events: auto;
-    }
+/* MASAÜSTÜ İÇİN GÜVENLİK KURALI: Butonu gizle */
+@media(min-width:701px) {
+    .mobil-book-btn { display: none !important; }
 }
 
 
@@ -692,19 +635,3 @@ h1 span {
     display: block !important; 
 }
 
-/* Sadece mobil için özel düzen */
-@media(max-width:700px) {
-    .book-intro { 
-        display: flex !important; /* Mobilde flex yapısına geçiyoruz */
-        flex-direction: column; 
-    }
-    
-    /* Mobil buton masaüstünde gizli kalsın, mobil açılınca görünsün */
-    .mobil-book-btn {
-        display: none !important; 
-    }
-    
-    .book.active-pop .mobil-book-btn {
-        display: block !important; /* Aktif olduğunda butonu göster */
-    }
-}
