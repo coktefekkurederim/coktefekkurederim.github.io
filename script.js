@@ -85,7 +85,7 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
                 btn.style.borderRadius = "5px";
                 btn.style.boxShadow = "0 4px 10px rgba(0,0,0,0.3)";
                 
-                intro.appendChild(btn);
+                intro.prepend(btn);
             }
         });
     }
