@@ -374,18 +374,12 @@ h1 span {
     top: 50%;
     /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
     left: 99%; 
-/* Yazı tipi keskinleştirme */
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-/* Mevcut özelliklerinize ekleyin */
-    backface-visibility: hidden; /* Metni 3D render sırasında gizlemez, keskinleştirir */
-    perspective: 1000px;
-    /* Metnin bulanıklaşmasını engellemek için tarayıcıya ipucu verir */
-    will-change: transform;
-    
-  /* Bulanıklığı gidermek için güncellenen satır */
-    transform: translateY(-50%) translateZ(0);
+
+  
+/* Transform veya Filter'ı tamamen devre dışı bırak */
+    transform: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
 
     
     
@@ -406,8 +400,7 @@ h1 span {
     text-align: left;
     /* Keskinlik ayarları */
     filter: none !important;
-    backface-visibility: hidden;
-    -webkit-font-smoothing: antialiased;
+
 }
 
 /* Satırın en sağındaki kapaklar için SOLDA (1px bindirmeli) açılma kuralı */
@@ -433,8 +426,7 @@ h1 span {
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     padding-bottom: 6px;
-    /* Hareket esnasında metnin kutudan "bağımsız" kalarak netleşmesini sağlar */
-    transform: translateZ(0);
+   
 }
 
 /* Giriş metni alanı */
@@ -444,8 +436,7 @@ h1 span {
     margin: 0;
     font-size: 0.9rem; 
     line-height: 1.5;
-    /* Hareket esnasında metnin kutudan "bağımsız" kalarak netleşmesini sağlar */
-    transform: translateZ(0);
+
 }
 
 /* İnce Kaydırma Çubuğu Tasarımı */
@@ -455,6 +446,11 @@ h1 span {
 .book-intro::-webkit-scrollbar-thumb {
     background: #bf953f;
     border-radius: 2px;
+
+    /* Transform veya Filter'ı tamamen devre dışı bırak */
+    transform: none !important;
+    filter: none !important;
+    backdrop-filter: none !important;
 }
 
 
