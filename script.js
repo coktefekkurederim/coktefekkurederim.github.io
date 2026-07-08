@@ -170,7 +170,7 @@ function handleMove(e) {
 // ==========================================================
 // DİNAMİK ALTIN TOZU OLUŞTURMA MOTORU
 // ==========================================================
-function createGoldDust(count = 99) {
+function createGoldDust(count = 999) {
     const container = document.querySelector('.gold-dust-container');
     if (!container) return;
 
