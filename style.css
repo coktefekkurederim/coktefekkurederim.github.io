@@ -561,7 +561,7 @@ h1 span {
     
     .book-intro { 
         position: absolute;
-        display: none !important;
+        display: block !important;
         top: 105% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
         left: 50% !important;
         width: 280px !important;
@@ -591,23 +591,6 @@ h1 span {
     .book-intro p {
         font-size: 0.85rem !important;
         line-height: 1.5;
-    }
-}
-
-/* Linkin düzgün çalışması için */
-.book-link {
-    display: block;
-    cursor: pointer;
-    text-decoration: none;
-    position: relative;
-}
-
-/* Mobil cihazlarda intro'nun PDF linkini engellememesi için */
-@media(max-width:700px) {
-    .book-intro {
-        /* Eğer tıklayınca hem PDF açılacak hem intro görünecekse 
-           aşağıdaki satırı kullanın */
-        display: block !important; 
     }
 }
 
