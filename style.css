@@ -594,6 +594,23 @@ h1 span {
     }
 }
 
+/* Linkin düzgün çalışması için */
+.book-link {
+    display: block;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+}
+
+/* Mobil cihazlarda intro'nun PDF linkini engellememesi için */
+@media(max-width:700px) {
+    .book-intro {
+        /* Eğer tıklayınca hem PDF açılacak hem intro görünecekse 
+           aşağıdaki satırı kullanın */
+        display: block !important; 
+    }
+}
+
 /* Buton nefes alma animasyonu */
 
 @keyframes breathing {
