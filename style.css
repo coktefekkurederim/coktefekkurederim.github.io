@@ -391,7 +391,7 @@ h1 span {
     top: 50%;
     /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
     left: 99%; 
-    transform: translateY(-50%);
+    
     
     width: 340px; 
     max-height: 280px; 
