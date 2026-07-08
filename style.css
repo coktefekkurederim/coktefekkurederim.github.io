@@ -47,6 +47,7 @@ body::before {
 }
 .dust {
     position: absolute;
+    top: 0;
     background: radial-gradient(circle, var(--gold2) 0%, transparent 70%);
     border-radius: 50%;
     opacity: 0;
