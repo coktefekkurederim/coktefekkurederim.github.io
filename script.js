@@ -167,6 +167,41 @@ function handleMove(e) {
     }
 }
 
+// ==========================================================
+// DİNAMİK ALTIN TOZU OLUŞTURMA MOTORU
+// ==========================================================
+function createGoldDust(count = 35) {
+    const container = document.querySelector('.gold-dust-container');
+    if (!container) return;
+
+    for (let i = 0; i < count; i++) {
+        const dust = document.createElement('div');
+        dust.className = 'dust';
+
+        // Rastgele boyut (2px ile 7px arası)
+        const size = Math.random() * 5 + 2; 
+        dust.style.width = `${size}px`;
+        dust.style.height = `${size}px`;
+
+        // Rastgele yatay konum (0% - 100%)
+        dust.style.left = `${Math.random() * 100}%`;
+
+        // Rastgele animasyon süresi ve gecikmesi (Birbirinin aynısı yapay durmasın diye)
+        const duration = Math.random() * 8 + 10; // 10s - 18s arası
+        const delay = Math.random() * 12;        // 0s - 12s arası gecikme
+        
+        dust.style.animationDuration = `${duration}s`;
+        dust.style.animationDelay = `${delay}s`;
+
+        container.appendChild(dust);
+    }
+}
+
+// Sayfa yüklendiğinde motoru çalıştır
+document.addEventListener("DOMContentLoaded", () => {
+    createGoldDust(20); // 20 adet asil altın tozu taneciği üretir
+});
+
 // 📱 MOBİL İÇİN AKILLI DOKUNMA YÖNETİMİ
 if (window.innerWidth <= 700) {
     books.forEach(book => {
