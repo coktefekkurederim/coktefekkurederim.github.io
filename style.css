@@ -127,15 +127,13 @@ h2 {
     
     /* Başlangıçta görünmez ve yukarıda dururlar (JS inderecek) */
     opacity: 0;
-    transform: scale(1);
+    transform: translateY(-100px) scale(0.7) rotateX(20deg);
     
     /* Fare hareketlerini algılayacak yumuşak geçiş kuralı */
     transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
 }
 
 .book:hover {
-    /* Sadece büyüme (zoom) efekti */
-    transform: scale(1.08) !important;
     z-index: 999 !important;
 }
 
@@ -374,14 +372,7 @@ h1 span {
     top: 50%;
     /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
     left: 99%; 
-
-  
-/* Transform veya Filter'ı tamamen devre dışı bırak */
-    transform: none !important;
-    filter: none !important;
-    backdrop-filter: none !important;
-
-    
+    transform: translateY(-50%);
     
     width: 340px; 
     max-height: 280px; 
@@ -398,9 +389,6 @@ h1 span {
     transition: opacity 0.3s ease;
     z-index: 100;
     text-align: left;
-    /* Keskinlik ayarları */
-    filter: none !important;
-
 }
 
 /* Satırın en sağındaki kapaklar için SOLDA (1px bindirmeli) açılma kuralı */
@@ -426,7 +414,6 @@ h1 span {
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     padding-bottom: 6px;
-   
 }
 
 /* Giriş metni alanı */
@@ -436,7 +423,6 @@ h1 span {
     margin: 0;
     font-size: 0.9rem; 
     line-height: 1.5;
-
 }
 
 /* İnce Kaydırma Çubuğu Tasarımı */
@@ -446,11 +432,6 @@ h1 span {
 .book-intro::-webkit-scrollbar-thumb {
     background: #bf953f;
     border-radius: 2px;
-
-    /* Transform veya Filter'ı tamamen devre dışı bırak */
-    transform: none !important;
-    filter: none !important;
-    backdrop-filter: none !important;
 }
 
 
