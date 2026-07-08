@@ -372,8 +372,20 @@ h1 span {
     top: 50%;
     /* 105%'ten 99%'a çekerek kutuyu kapağın 1 piksel üzerine bindirdik */
     left: 99%; 
+/* Yazı tipi keskinleştirme */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+/* Mevcut özelliklerinize ekleyin */
+    backface-visibility: hidden; /* Metni 3D render sırasında gizlemez, keskinleştirir */
+    perspective: 1000px;
+    /* Metnin bulanıklaşmasını engellemek için tarayıcıya ipucu verir */
+    will-change: transform;
+    
   /* Bulanıklığı gidermek için güncellenen satır */
     transform: translateY(-50%) translateZ(0);
+
+    
     
     width: 340px; 
     max-height: 280px; 
@@ -419,6 +431,8 @@ h1 span {
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(212, 175, 55, 0.3);
     padding-bottom: 6px;
+    /* Hareket esnasında metnin kutudan "bağımsız" kalarak netleşmesini sağlar */
+    transform: translateZ(0);
 }
 
 /* Giriş metni alanı */
@@ -428,6 +442,8 @@ h1 span {
     margin: 0;
     font-size: 0.9rem; 
     line-height: 1.5;
+    /* Hareket esnasında metnin kutudan "bağımsız" kalarak netleşmesini sağlar */
+    transform: translateZ(0);
 }
 
 /* İnce Kaydırma Çubuğu Tasarımı */
