@@ -715,7 +715,7 @@ footer {
     .book-intro { 
         position: absolute;
         display: block !important;
-        top: 95% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
+        top: 78% !important; /* Biraz aşağı kaydırdık ki kapakla çakışmasın */
         left: 50% !important;
         width: 300px !important;
         max-height: 290px !important; /* Yüksekliği biraz kıstık ki ekran dışına taşmasın */
