@@ -690,7 +690,40 @@ footer {
        z-index: 1000;
       margin-bottom: 15px;
    }
- 
+
+    /* MÜZİK BUTONU----------------------------------------- */
+    .music-btn {
+
+    position: sticky;        /* Ekranın en üstüne kilitler */
+    top: 2px;              /* Tavandan tam 2px boşluk */
+    right: 2px;
+    left: auto;       /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
+    margin-left: 0;   /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
+
+    z-index: 999999;/* Butonun her şeyin üstünde kalması için */
+    background: rgba(18, 18, 18, 0.6);
+    border: 1px solid var(--gold2);
+    color: #e3decb;
+    padding: 8px 12px;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.music-btn:hover {
+    background: var(--gold2);
+    color: #121212;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+    /* MÜZİK BUTONU SONU----------------------------------------- */
  }
 /* ==========================================================
         * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ SONU --- *
