@@ -702,7 +702,7 @@ footer {
         /* Aktif olan kitabı en üste çıkarıyoruz */
     .book.active-pop {
         z-index: 99999 !important;
-        opacity: 1
+        opacity: 1;
         transform: translateX(-50%) scale(1);
         pointer-events: auto;
     }
