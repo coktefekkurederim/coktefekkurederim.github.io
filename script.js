@@ -24,6 +24,53 @@ if (musicBtn && bgMusic) {
     });
 }
 
+/* ==========================================================
+   PREMIUM ALTIN TOZU MOTORU v2.0
+========================================================== */
+
+const dustContainer = document.querySelector(".gold-dust-container");
+
+const DUST_COUNT =
+    window.innerWidth < 700 ? 45 : 80;
+
+for (let i = 0; i < DUST_COUNT; i++) {
+
+    const dust = document.createElement("div");
+    dust.className = "dust";
+
+    // Boyut
+    const size = Math.random() * 4 + 2;
+    dust.style.width = size + "px";
+    dust.style.height = size + "px";
+
+    // Başlangıç konumu
+    dust.style.left = Math.random() * 100 + "%";
+
+    // Her parçacığın farklı animasyon süresi
+    dust.style.setProperty(
+        "--speed",
+        (10 + Math.random() * 10) + "s"
+    );
+
+    // Farklı parıltı süresi
+    dust.style.setProperty(
+        "--sparkle",
+        (1.8 + Math.random() * 3) + "s"
+    );
+
+    // Farklı başlangıç zamanı
+    dust.style.animationDelay =
+        -(Math.random() * 20) + "s";
+
+    // Hafif farklı opaklık
+    dust.style.opacity =
+        0.25 + Math.random() * 0.75;
+
+    dustContainer.appendChild(dust);
+}
+
+
+
 // ==========================================================
 // GİRİŞ ANİMASYONU MOTORU (Sihirli Gökten İniş Şovu)
 // ==========================================================
