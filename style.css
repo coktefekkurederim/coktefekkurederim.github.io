@@ -659,6 +659,8 @@ footer {
    .mobil-book-btn {
        
        position: sticky;   /* mobildeaçıklama penceresinde buton üstte sabit kalır, absolute scroll ile kaybolur sticky kaybolmaz */
+       margin-left: 0;    /* PC seçtiondan'dan gelen 500px margin-left'i sıfırlar */
+       left: auto;        /* PC seçtiondan'dan gelen 'left' değerini iptal eder */
        top: 2px;
        right: 10px;
        z-index: 1000;
