@@ -324,7 +324,7 @@ h1 span {
     text-align: center;
     padding: 30px 20px;
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
 
 .social-section h3 {
@@ -334,7 +334,7 @@ h1 span {
     letter-spacing: 2px;
     margin-bottom: 20px;
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
 
 .social-icons {
@@ -342,7 +342,7 @@ h1 span {
     justify-content: center;
     gap: 25px;
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
 
 .social-btn {
@@ -357,7 +357,7 @@ h1 span {
     transition: transform 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28), background 0.3s, box-shadow 0.3s;
     cursor: pointer;
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
 
 .social-btn svg {
@@ -366,7 +366,7 @@ h1 span {
     fill: var(--gold2);
     transition: fill 0.3s;
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
 
 .social-btn:hover {
@@ -374,12 +374,12 @@ h1 span {
     background: rgba(212, 175, 55, 0.12);
     box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
 
 .social-btn:hover svg { fill: #ffffff; 
     position: relative;
-    z-index: 6;
+    z-index: 1;
 }
     
 
@@ -497,43 +497,8 @@ footer {
     animation: breathing 2.8s ease-in-out infinite;
 }
 
-
-
-
 /* ==========================================================
-/* ==========================================================
-/* ==========================================================
-     * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- *
-========================================================== */
-@media(max-width:700px){
-    .dock { 
-        position: relative;
-        z-index: 10;
-        max-width: 360px;
-        gap: 35px 20px;
-        padding: 40px 10px;
-    }
-    
-    .book { 
-        width: 135px !important;
-        transform: none !important; 
-        transition: none !important;
-        position: relative; 
-        flex: 0 0 140px; 
-        margin: 10px 12px;
-        z-index: 10;
-    }
-
-    .social-section {
-        text-align: center;
-        padding: 30px 20px;
-        position: relative;
-        z-index: 6;
-    }
-
-
-/* ==========================================================
-   2'Lİ ALT ALTA AYRI KUTULU PAYLAŞIM ALANI EN ALT DİL AÇIKLAMALARI
+   2'Lİ ALT ALTA AYRI KUTULU PAYLAŞMA ŞARTLARI ALANI EN ALT DİL AÇIKLAMALARI
 ========================================================== */
     .share-grid-container {
        max-width: 900px;
@@ -573,6 +538,39 @@ footer {
        opacity: 0.95;
        text-align: left;
    }
+
+
+/* ==========================================================
+/* ==========================================================
+/* ==========================================================
+     * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- *
+========================================================== */
+@media(max-width:700px){
+    .dock { 
+        position: relative;
+        z-index: 10;
+        max-width: 360px;
+        gap: 35px 20px;
+        padding: 40px 10px;
+    }
+    
+    .book { 
+        width: 135px !important;
+        transform: none !important; 
+        transition: none !important;
+        position: relative; 
+        flex: 0 0 140px; 
+        margin: 10px 12px;
+        z-index: 10;
+    }
+
+    .social-section {
+        text-align: center;
+        padding: 30px 20px;
+        position: relative;
+        z-index: 6;
+    }
+
 
      /* Başlığın altına mobilde ekstra güvenli bir boşluk veriyoruz ki yazar adı aşağı kaysın */
     h1 {
