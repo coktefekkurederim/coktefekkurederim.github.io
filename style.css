@@ -176,8 +176,8 @@ h1 span {
 }
 
 .book {
-    flex: 0 0 155px;
-    width: 155px !important;
+    flex: 0 0 200px;
+    width: 200px !important;
     height: auto;
     position: relative;
     display: block;
