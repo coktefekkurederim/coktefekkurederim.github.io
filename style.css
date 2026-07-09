@@ -451,16 +451,20 @@ footer {
 }
 
 .music-btn {
-    position: fixed;
-    top: 20px;
-    right: 20px;
+    display: inline-block;/* Başlığın sağında durması için */
+    margin-left: 20px; /* Yaklaşık 1 cm boşluk (20px-30px arası idealdir) */
+    vertical-align: top; /* Gerekirse dikey hizalama */
+    z-index: 1000;/* Butonun her şeyin üstünde kalması için */
+    position: sticky; /* Ekrana yapışması için */
+    top: 20px; /* Sitenin tepesinden 20px uzaklıkta tutar */
+    right: 15px;
     z-index: 9999;
     background: rgba(18, 18, 18, 0.6);
     border: 1px solid var(--gold2);
     color: #e3decb;
-    padding: 10px 16px;
+    padding: 8px 12px;
     border-radius: 30px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -478,13 +482,6 @@ footer {
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
 }
 
-
-.music-btn { 
-    top: 15px; 
-    right: 15px; 
-    padding: 8px 12px; 
-    font-size: 0.8rem; 
-}
 
 /* Buton nefes alma animasyonu */
 
