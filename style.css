@@ -841,26 +841,10 @@ footer {
 /* ==========================================================
      * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ --- *
 ========================================================== */
-@media(max-width:700px){
-    .dock { 
-        position: relative;
-        z-index: 10;
-        max-width: 360px;
-        gap: 35px 20px;
-        padding: 40px 10px;
-    }
-    
-    .book { 
-        width: 135px !important;
-        transform: none !important; 
-        transition: none !important;
-        position: relative; 
-        flex: 0 0 140px; 
-        margin: 10px 12px;
-        z-index: 10;
-    }
+@media(max-width:820px){
 
-    /* ==========================================================
+
+ /* ==========================================================
    KİLİTSİZ VE ÖZGÜR KAPAK ALANI DOCK ALANI
 ========================================================== */
 .dock {
@@ -890,6 +874,7 @@ footer {
     perspective: 1000px;
     z-index: 11;
     will-change: transform, opacity;
+    margin: 10px 12px;
     
     /* Başlangıçta görünmez ve yukarıda dururlar (JS inderecek) */
     opacity: 0;
