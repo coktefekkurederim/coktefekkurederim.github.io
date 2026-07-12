@@ -25,6 +25,45 @@ if (musicBtn && bgMusic) {
 }
 
 /* ==========================================================
+   TEMA SEÇİCİ BUTONU
+========================================================== */
+
+const btn=document.getElementById("palette-btn");
+const menu=document.getElementById("theme-menu");
+
+btn.onclick=()=>{
+
+    menu.classList.toggle("show");
+
+}
+
+document.querySelectorAll(".theme-color").forEach(color=>{
+
+    color.onclick=()=>{
+
+        const theme=color.dataset.theme;
+
+        document.body.dataset.theme=theme;
+
+        localStorage.setItem("theme",theme);
+
+    }
+
+});
+
+const saved=localStorage.getItem("theme");
+
+if(saved){
+
+    document.body.dataset.theme=saved;
+
+}
+
+/* ==========================================================
+========================================================== */
+
+
+/* ==========================================================
    PREMIUM ALTIN TOZU MOTORU v2.0
 ========================================================== */
 
