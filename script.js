@@ -228,6 +228,7 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
         const light=document.createElement("div");
 
         light.className="frame-light";
+        light.innerHTML='<div class="tail"></div>';
 
         btn.appendChild(light);
 
