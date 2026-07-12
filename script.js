@@ -219,38 +219,95 @@ setTimeout(()=>p.remove(),900);
 
 document.querySelectorAll(".frame-btn").forEach(btn=>{
 
-btn.addEventListener("click",e=>{
+    btn.addEventListener("click",()=>{
 
-btn.classList.remove("clicked");
+        const old=btn.querySelector(".frame-light");
 
-void btn.offsetWidth;
+        if(old) old.remove();
 
-btn.classList.add("clicked");
+        const light=document.createElement("div");
 
-const r=btn.getBoundingClientRect();
+        light.className="frame-light";
 
-for(let i=0;i<26;i++){
+        btn.appendChild(light);
 
-const p=document.createElement("div");
+        const w=btn.offsetWidth;
+        const h=btn.offsetHeight;
 
-p.className="spark";
+        const p=2;
 
-p.style.left=(r.left+r.width/2)+"px";
-p.style.top=(r.top+r.height/2)+"px";
+        const top=w;
+        const right=h;
+        const bottom=w;
+        const left=h;
 
-const a=Math.random()*Math.PI*2;
-const d=40+Math.random()*50;
+        const total=top+right+bottom+left;
 
-p.style.setProperty("--x",Math.cos(a)*d+"px");
-p.style.setProperty("--y",Math.sin(a)*d+"px");
+        let start=null;
+        let lastX=0;
+        let lastY=0;
 
-document.body.appendChild(p);
+        function animate(t){
 
-setTimeout(()=>p.remove(),900);
+            if(!start) start=t;
 
-}
+            const raw=Math.min((t-start)/1200,1);
 
-});
+            const progress=1-Math.pow(1-raw,5);
+
+            const d=progress*total;
+
+            let x,y;
+
+            if(d<top){
+
+                x=p+d;
+                y=p;
+
+            }else if(d<top+right){
+
+                x=w-p;
+                y=p+(d-top);
+
+            }else if(d<top+right+bottom){
+
+                x=w-p-(d-top-right);
+                y=h-p;
+
+            }else{
+
+                x=p;
+                y=h-p-(d-top-right-bottom);
+
+            }
+
+            light.style.left=x+"px";
+            light.style.top=y+"px";
+            light.style.opacity=1;
+
+            const angle=Math.atan2(y-lastY,x-lastX);
+
+            light.style.transform=
+            `translate(-50%,-50%) rotate(${angle}rad)`;
+
+            lastX=x;
+            lastY=y;
+
+            if(progress<1){
+
+                requestAnimationFrame(animate);
+
+            }else{
+
+                light.remove();
+
+            }
+
+        }
+
+        requestAnimationFrame(animate);
+
+    });
 
 });
 // ==========================================================
