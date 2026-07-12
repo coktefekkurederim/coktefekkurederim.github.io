@@ -1000,8 +1000,8 @@ footer {
 
         position:fixed;   /* fixed tarayıcı penceresine sabitler, absolute siteye sabitler Scroll yaptıkça kaybolur, sticky ise açıklama penceresindeki buton gibi kaydırınca yerinde kalır. */
 
-        top:31px;
-        right: 20px;      /* Sağdan tam 10px boşluk */
+        top:40px;
+        right: 10px;      /* Sağdan tam 10px boşluk */
         left: auto;       /* Ana margin ayarını mobil için sıfırlıyoruz ki taşmasın dışarı */
 
         z-index:999999;
