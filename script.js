@@ -222,152 +222,118 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
     btn.addEventListener("click",()=>{
 
         const old=btn.querySelector(".frame-light");
-
         if(old) old.remove();
 
         const light=document.createElement("div");
-
         light.className="frame-light";
-        light.innerHTML='<div class="tail"></div>';
+
+        for(let i=0;i<14;i++){
+
+            const t=document.createElement("span");
+            t.className="trail";
+            light.appendChild(t);
+
+        }
 
         btn.appendChild(light);
 
         const w=btn.offsetWidth;
         const h=btn.offsetHeight;
 
-        const p=2;
+        const pad=2;
 
-        const top=w;
-        const right=h;
-        const bottom=w;
-        const left=h;
-
-        const total=top+right+bottom+left;
+        const perimeter=(w*2+h*2)-8;
 
         let start=null;
-            let lastX=0;
-            let lastY=0;
 
-        function animate(t){
+        let lastX=0;
+        let lastY=0;
 
-            if(!start) start=t;
+        function animate(time){
 
-            const raw=Math.min((t-start)/1100,1);
+            if(!start) start=time;
 
-let progress;
+            const raw=Math.min((time-start)/1300,1);
 
-if(raw<0.18){
+            let progress;
 
-    // Motor enerji topluyor
-    progress = raw * 0.005;
+            if(raw<0.18){
 
-}else{
-
-    const x = (raw - 0.18) / 0.82;
-
-    // Ani warp ivmesi
-    progress = 0.001 + 0.999 * Math.pow(x,0.12);
-
-}
-            const d=progress*total;
-
-            let x,y;
-
-            if(d<top){
-
-                x=p+d;
-                y=p;
-
-            }else if(d<top+right){
-
-                x=w-p;
-                y=p+(d-top);
-
-            }else if(d<top+right+bottom){
-
-                x=w-p-(d-top-right);
-                y=h-p;
+                progress=raw*0.01;
 
             }else{
 
-                x=p;
-                y=h-p-(d-top-right-bottom);
+                const x=(raw-.18)/.82;
+
+                progress=.002+.998*(1-Math.pow(1-x,6));
 
             }
 
-            light.style.left=x+"px";
-            light.style.top=y+"px";
-            light.style.opacity=1;
+            const d=progress*perimeter;
 
-            let glow;
+            let x,y;
 
-if(raw<0.15){
+            if(d<w){
 
-    glow=6;
+                x=pad+d;
+                y=pad;
 
-}else if(raw<0.30){
+            }else if(d<w+h){
 
-    glow=6-((raw-0.15)/0.15)*2.8;
+                x=w-pad;
+                y=pad+(d-w);
 
-}else{
+            }else if(d<w+h+w){
 
-    glow=3;
+                x=w-pad-(d-w-h);
+                y=h-pad;
 
-}
+            }else{
 
-light.style.filter=
-    const tail = light.querySelector(".tail");
+                x=pad;
+                y=h-pad-(d-w-h-w);
 
-if(tail){
-
-    let len;
-
-    if(raw<0.15){
-
-        len=35;
-
-    }else if(raw<0.35){
-
-        len=35+(raw-0.15)/0.20*140;
-
-    }else{
-
-        len=175-(raw-0.35)/0.65*80;
-
-    }
-
-    tail.style.width=len+"px";
-
-}
-`brightness(${glow}) drop-shadow(0 0 ${glow*7}px #fff7a0)`;
+            }
 
             const angle=Math.atan2(y-lastY,x-lastX);
 
-let stretch;
+            lastX=x;
+            lastY=y;
 
-if(raw<0.15){
+            light.style.left=x+"px";
+            light.style.top=y+"px";
 
-    stretch=.5;
+            light.style.transform=
+            `translate(-50%,-50%) rotate(${angle}rad)`;
 
-}else if(raw<0.28){
+            let tailLength;
 
-    stretch=.5+((raw-.15)/.13)*9;
+            if(raw<0.15){
 
-}else if(raw<0.45){
+                tailLength=25;
 
-    stretch=9-((raw-.28)/.17)*5;
+            }else if(raw<0.30){
 
-}else{
+                tailLength=25+((raw-.15)/.15)*170;
 
-    stretch=4-(raw-.45)*2.5;
+            }else{
 
-}
+                tailLength=195-(raw-.30)*130;
 
-light.style.transform=
-`translate(-50%,-50%) rotate(${angle}rad)`;
+            }
 
-lastX=x;
-lastY=y;
+            light.querySelectorAll(".trail").forEach((e,i)=>{
+
+                const p=i/13;
+
+                e.style.width=(tailLength*(1-p))+"px";
+
+                e.style.opacity=(1-p)*(raw<0.2?1.2:0.75);
+
+                e.style.transform=
+                `translate(${-tailLength*p}px,-50%)`;
+
+            });
 
             if(progress<1){
 
