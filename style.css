@@ -280,7 +280,6 @@ body::before {
 .frame-btn{
 
     position:relative;
-    overflow:visible;
 
     width:54px;
     height:54px;
@@ -321,6 +320,26 @@ body::before {
     font-size:20px;
 
     z-index:2;
+
+}
+
+.frame-btn .label{
+
+    white-space:nowrap;
+
+    opacity:0;
+
+    transform:translateX(-15px);
+
+    transition:.35s;
+
+    color:#ffeeb0;
+
+    font-family:"Cinzel",serif;
+
+    letter-spacing:1px;
+
+    padding-right:18px;
 
 }
 
@@ -385,51 +404,40 @@ body::before {
 
 /* Altın ışığın çerçevede dolaşması */
 
-.frame-light{
+.frame-btn::before{
+
+    content:"";
 
     position:absolute;
 
-    width:12px;
-    height:12px;
+    inset:-2px;
 
-    pointer-events:none;
+    border-radius:18px;
 
-    z-index:999;
+    padding:2px;
 
-    border-radius:50%;
+    background:
+    conic-gradient(
+    from 0deg,
+    transparent,
+    transparent,
+    transparent,
+    #ffe27a,
+    #fff8d2,
+    #ffd34c,
+    transparent,
+    transparent);
 
-    background:radial-gradient(circle,#fff 0%,#fff7c5 22%,#ffd54d 55%,transparent);
+    -webkit-mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
 
-    box-shadow:
-        0 0 10px #fff,
-        0 0 18px #ffe27a,
-        0 0 40px #d4af37;
+    -webkit-mask-composite:xor;
 
-}
+    mask-composite:exclude;
 
-.frame-light .trail{
+    opacity:0;
 
-    position:absolute;
-
-    left:0;
-    top:50%;
-
-    height:4px;
-
-    border-radius:30px;
-
-    transform-origin:right center;
-
-    background:linear-gradient(
-        to left,
-        rgba(255,255,255,.95),
-        rgba(255,243,170,.75),
-        rgba(255,210,70,.45),
-        rgba(255,180,20,.15),
-        transparent
-    );
-
-    filter:blur(3px);
 }
 /* TIKLANINCA IŞIK DÖNSÜN */
 
