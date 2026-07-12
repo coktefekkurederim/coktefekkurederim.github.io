@@ -5,6 +5,11 @@
     --gold2: #f4df8a;
     --text: #f8f5ea;
     --glass: rgba(255, 255, 255, .04);
+
+    --text2:#e3decb;
+    --heading:#f4df8a;
+    --card:#120d04;
+    --subheading:#c9b080;
 }
 
 /* ==========================================================
@@ -20,9 +25,13 @@ body[data-theme="light"]{
 --gold2:#8b6800;
 
 --text:#222;
-
+--card:white;
 --glass:rgba(255,255,255,.7);
 
+--text:#222;
+--text2:#444;
+--heading:#111;
+--subheading:#555;
 }
 
 body[data-theme="blue"]{
@@ -93,6 +102,7 @@ h1 {
     font-size: clamp(2.2rem, 5.5vw, 4.2rem);
     margin: 0;
     color: var(--gold2);
+    color:var(--heading);
     text-shadow: 0 0 25px rgba(212,175,55,0.25);
     letter-spacing: 2px;
 }
