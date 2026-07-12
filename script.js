@@ -251,9 +251,21 @@ document.querySelectorAll(".frame-btn").forEach(btn=>{
 
             if(!start) start=t;
 
-            const raw=Math.min((t-start)/1200,1);
+const raw=Math.min((t-start)/1200,1);
 
-            const progress=1-Math.pow(1-raw,5);
+let progress;
+
+if(raw<0.12){
+
+    progress=raw*0.03;
+
+}else{
+
+    const x=(raw-0.12)/0.88;
+
+    progress=0.003+0.997*(1-Math.pow(1-x,4.5));
+
+}
 
             const d=progress*total;
 
