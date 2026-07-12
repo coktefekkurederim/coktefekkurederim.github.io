@@ -385,39 +385,27 @@ body::before {
 
 /* Altın ışığın çerçevede dolaşması */
 
-.frame-btn::before{
-
-    content:"";
+.frame-light{
 
     position:absolute;
 
-    inset:-2px;
+    width:12px;
+    height:12px;
 
-    border-radius:18px;
+    border-radius:50%;
 
-    padding:2px;
+    pointer-events:none;
 
-    background:
-    conic-gradient(
-    from 0deg,
-    transparent,
-    transparent,
-    transparent,
-    #ffe27a,
-    #fff8d2,
-    #ffd34c,
-    transparent,
-    transparent);
+    background:radial-gradient(circle,#fff 0%,#fff7b5 30%,#ffd54d 60%,transparent 100%);
 
-    -webkit-mask:
-        linear-gradient(#000 0 0) content-box,
-        linear-gradient(#000 0 0);
-
-    -webkit-mask-composite:xor;
-
-    mask-composite:exclude;
+    box-shadow:
+        0 0 8px #fff,
+        0 0 16px #ffe27a,
+        0 0 28px #d4af37;
 
     opacity:0;
+
+    z-index:999;
 
 }
 
