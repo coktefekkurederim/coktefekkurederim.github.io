@@ -359,7 +359,7 @@ h1 span {
 ========================================================== */
 .dock {
 
-    display: grid;
+    display: flex;
     grid-template-columns: repeat(4, 200px);
 
     flex-wrap: wrap;
