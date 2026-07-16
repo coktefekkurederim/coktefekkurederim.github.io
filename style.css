@@ -2063,11 +2063,9 @@ header{
     gap: 25px 30px; 
     position: relative;
     z-index: 5;
-   }    
+   }
 
-}
-
- /* müellif fotoğrafını mobilde ortalıyoruz----------------------------------------- */
+     /* müellif fotoğrafını mobilde ortalıyoruz----------------------------------------- */
 .author-photo{
 
     float:none;
@@ -2076,7 +2074,11 @@ header{
 
     margin:0 auto 30px;
 
-}    
+}  
+
+}
+
+  
  
 /* ==========================================================
         * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ SONU --- *
