@@ -260,41 +260,41 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
 // YAN PANEL TIKLAMA İŞLEMLERİ
 // ==========================================================
 
-document.querySelectorAll(".frame-btn").forEach(btn=>{
+document.querySelectorAll(".frame-btn").forEach((btn, index) => {
+    btn.addEventListener("click", e => {
+        // --- 1. Sizin Mevcut Görsel Efektleriniz ---
+        btn.classList.remove("clicked");
+        void btn.offsetWidth;
+        btn.classList.add("clicked");
+        
+        const r = btn.getBoundingClientRect();
+        for(let i=0; i<26; i++){
+            const p = document.createElement("div");
+            p.className = "spark";
+            p.style.left = (r.left + r.width/2) + "px";
+            p.style.top = (r.top + r.height/2) + "px";
+            const a = Math.random()*Math.PI*2;
+            const d = 40 + Math.random()*50;
+            p.style.setProperty("--x", Math.cos(a)*d + "px");
+            p.style.setProperty("--y", Math.sin(a)*d + "px");
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 900);
+        }
 
-btn.addEventListener("click",e=>{
-
-btn.classList.remove("clicked");
-
-void btn.offsetWidth;
-
-btn.classList.add("clicked");
-
-const r=btn.getBoundingClientRect();
-
-for(let i=0;i<26;i++){
-
-const p=document.createElement("div");
-
-p.className="spark";
-
-p.style.left=(r.left+r.width/2)+"px";
-p.style.top=(r.top+r.height/2)+"px";
-
-const a=Math.random()*Math.PI*2;
-const d=40+Math.random()*50;
-
-p.style.setProperty("--x",Math.cos(a)*d+"px");
-p.style.setProperty("--y",Math.sin(a)*d+"px");
-
-document.body.appendChild(p);
-
-setTimeout(()=>p.remove(),900);
-
-}
-
-});
-
+        // --- 2. İçerik Değiştirme Mantığı (Eklediğimiz kısım) ---
+        const contentArea = document.getElementById('content-area');
+        
+        if (index === 0) { // Ana Sayfa
+            location.reload(); 
+        } else { // Diğerleri
+            contentArea.innerHTML = `
+                <div class="gold-frame">
+                    <h3 style="color: #d4af37; text-align: center;">Yakında Eklenecek Bölüm</h3>
+                    <p style="color: #f8f5ea; text-align: center;">Buraya daha sonra içerik eklenecektir.</p>
+                </div>
+            `;
+        }
+    });
 });
 
 // ==========================================================
