@@ -259,6 +259,14 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
 // ==========================================================
 // YAN PANEL TIKLAMA İŞLEMLERİ
 // ==========================================================
+let originalContent = "";
+document.addEventListener("DOMContentLoaded", () => {
+    const area = document.getElementById('content-area');
+    if (area) {
+        originalContent = area.innerHTML; // İçeriği olduğu gibi kopyaladık
+    }
+});
+
 
 document.querySelectorAll(".frame-btn").forEach((btn, index) => {
     btn.addEventListener("click", e => {
@@ -286,7 +294,9 @@ document.querySelectorAll(".frame-btn").forEach((btn, index) => {
         
         if (index === 0) { // Ana Sayfa
            // Ana Sayfa: Hafızaya aldığımız orijinal içeriği geri yükle
-            contentArea.innerHTML = originalContent;
+            if (originalContent !== "") {
+                contentArea.innerHTML = originalContent;
+            }
             localStorage.setItem('panelDurumu', 'acik');
 
             
