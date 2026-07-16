@@ -916,8 +916,10 @@ h1 span {
 /* SOSYAL MEDYA SİMGELERİ */
 .social-section {
     text-align: center;
+    justify-content: center; /* Ortaya hizalar */
     padding: 30px 20px;
     position: relative;
+    margin-top: 20px;
     z-index: 1;
 }
 
