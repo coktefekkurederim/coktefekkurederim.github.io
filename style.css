@@ -788,16 +788,8 @@ scale(1.8);
 
     width:min(1250px,92%);
     margin:120px auto;
-    color:var(--text);
 
-}
-
-#book-page .author-frame p{
-
-    text-align:justify;
-    font-size:1.12rem;
-    line-height:1.9;
-        position:relative;
+    position:relative;
 
     padding:60px;
 
@@ -810,6 +802,14 @@ scale(1.8);
     box-shadow:
         inset 0 0 0 1px rgba(255,235,170,.08),
         0 0 35px rgba(212,175,55,.08);
+
+}
+
+#book-page .author-frame p{
+
+    text-align:justify;
+    font-size:1.12rem;
+    line-height:1.9;
 
 }
 
