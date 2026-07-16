@@ -262,7 +262,8 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
 
 const pages = {
     0: "home-page",
-    1: "author-page"
+    1: "author-page",
+    2: "book-page"
 };
 
 document.querySelectorAll(".frame-btn").forEach((btn, index) => {
