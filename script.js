@@ -51,7 +51,9 @@ document.querySelectorAll(".language-item").forEach(item => {
 
     item.addEventListener("click", () => {
 
-                const pages = {
+        const lang = item.dataset.lang;
+
+        const pages = {
             tr:"index.html",
             en:"index-eng.html",
             es:"index-es.html",
@@ -61,12 +63,11 @@ document.querySelectorAll(".language-item").forEach(item => {
             fr:"index-fr.html"
         };
 
-        window.location.href = page;
+        window.location.href = pages[lang];
 
     });
 
 });
-
 
 
 /* ==========================================================
