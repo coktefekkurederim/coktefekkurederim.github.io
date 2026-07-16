@@ -2067,7 +2067,16 @@ header{
 
 }
 
-    
+ /* müellif fotoğrafını mobilde ortalıyoruz----------------------------------------- */
+.author-photo{
+
+    float:none;
+
+    display:block;
+
+    margin:0 auto 30px;
+
+}    
  
 /* ==========================================================
         * --- TELEFON VE KÜÇÜK EKRAN DÜZENİ SONU --- *
