@@ -259,67 +259,42 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
 // ==========================================================
 // YAN PANEL TIKLAMA İŞLEMLERİ
 // ==========================================================
-let originalContent = "";
-document.addEventListener("DOMContentLoaded", () => {
-    const area = document.getElementById('content-area');
-    if (area) {
-        originalContent = area.innerHTML; // İçeriği olduğu gibi kopyaladık
-    }
+
+document.querySelectorAll(".frame-btn").forEach(btn=>{
+
+btn.addEventListener("click",e=>{
+
+btn.classList.remove("clicked");
+
+void btn.offsetWidth;
+
+btn.classList.add("clicked");
+
+const r=btn.getBoundingClientRect();
+
+for(let i=0;i<26;i++){
+
+const p=document.createElement("div");
+
+p.className="spark";
+
+p.style.left=(r.left+r.width/2)+"px";
+p.style.top=(r.top+r.height/2)+"px";
+
+const a=Math.random()*Math.PI*2;
+const d=40+Math.random()*50;
+
+p.style.setProperty("--x",Math.cos(a)*d+"px");
+p.style.setProperty("--y",Math.sin(a)*d+"px");
+
+document.body.appendChild(p);
+
+setTimeout(()=>p.remove(),900);
+
+}
+
 });
 
-
-document.querySelectorAll(".frame-btn").forEach((btn, index) => {
-    btn.addEventListener("click", e => {
-        // --- 1. Sizin Mevcut Görsel Efektleriniz ---
-        btn.classList.remove("clicked");
-        void btn.offsetWidth;
-        btn.classList.add("clicked");
-        
-        const r = btn.getBoundingClientRect();
-        for(let i=0; i<26; i++){
-            const p = document.createElement("div");
-            p.className = "spark";
-            p.style.left = (r.left + r.width/2) + "px";
-            p.style.top = (r.top + r.height/2) + "px";
-            const a = Math.random()*Math.PI*2;
-            const d = 40 + Math.random()*50;
-            p.style.setProperty("--x", Math.cos(a)*d + "px");
-            p.style.setProperty("--y", Math.sin(a)*d + "px");
-            document.body.appendChild(p);
-            setTimeout(() => p.remove(), 900);
-        }
-
-        // --- 2. İçerik Değiştirme Mantığı (Eklediğimiz kısım) ---
-// Kodunuzun en başında, sayfa yüklendiğinde bir kez çalışacak olan kısım
-const contentArea = document.getElementById('content-area');
-const homeContent = contentArea.innerHTML; // Ana sayfa içeriğini olduğu gibi kopyaladık
-
-document.querySelectorAll(".frame-btn").forEach((btn, index) => {
-    btn.addEventListener("click", e => {
-        // --- 1. Görsel Efektleriniz (Aynı kalıyor) ---
-        // ... (spark/clicked efekt kodları) ...
-
-        // --- 2. İçerik Değiştirme Mantığı ---
-        if (index === 0) { 
-            // ANA SAYFA: Kaydettiğimiz orijinal içeriği geri yükle
-            contentArea.innerHTML = homeContent;
-            localStorage.setItem('panelDurumu', 'acik');
-            initBookAnimations();
-            
-            // ÖNEMLİ: Eğer içerik geri yüklendiğinde kitap animasyonları 
-            // tekrar başlamıyorsa, animasyon fonksiyonunuzu burada tekrar çağırın.
-            // Örn: initBookAnimations();
-
-            
-        } else { // Diğerleri
-            contentArea.innerHTML = `
-                <div class="gold-frame">
-                    <h3 style="color: #d4af37; text-align: center;">Yakında Eklenecek Bölüm</h3>
-                    <p style="color: #f8f5ea; text-align: center;">Buraya daha sonra içerik eklenecektir.</p>
-                </div>
-            `;
-        }
-    });
 });
 
 // ==========================================================
