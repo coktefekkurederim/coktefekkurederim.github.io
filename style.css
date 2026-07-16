@@ -784,20 +784,52 @@ scale(1.8);
 
 /* ==========KİTAP HAKKINDA SAYFASI BAŞI================================== */
 /* ============================================================== */
-.book-section {
+.book-section{
+
     width:100%;
     display:flex;
     justify-content:center;
+    padding:30px 20px;
+
 }
 
-
-.book-frame {
+.book-frame{
 
     max-width:900px;
-    padding:50px;
+    width:100%;
+
+    padding:60px;
+
     background:rgba(255,255,255,.04);
     border:1px solid rgba(212,175,55,.3);
     border-radius:20px;
+
+    text-align:left;
+
+}
+
+.book-frame h1{
+
+    text-align:center;
+    margin-bottom:12px;
+
+}
+
+.book-frame h2{
+
+    text-align:center;
+    margin-bottom:35px;
+
+}
+
+.book-frame p{
+
+    font-size:1.12rem;
+    line-height:1.95;
+    text-align:justify;
+    margin-bottom:22px;
+
+}
 
 }
 /* ==========KİTAP HAKKINDA SAYFASI SONU================================== */
