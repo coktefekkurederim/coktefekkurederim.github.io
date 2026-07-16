@@ -833,6 +833,78 @@ scale(1.8);
 /* ==========KİTAP HAKKINDA SAYFASI SONU================================== */
 /* ============================================================== */
 
+
+
+/* ==========GALERİ SAYFASI BAŞI================================== */
+/* ============================================================== */
+
+#gallery-page .author-frame h1{
+
+    text-align:center;
+    margin-bottom:20px;
+
+}
+
+.gallery-info{
+
+    text-align:center;
+    margin-bottom:40px;
+
+}
+
+.gallery-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:30px;
+
+}
+
+.gallery-grid a{
+
+    display:block;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    border:1px solid rgba(212,175,55,.35);
+
+    transition:.35s;
+
+    box-shadow:0 0 18px rgba(212,175,55,.08);
+
+}
+
+.gallery-grid a:hover{
+
+    transform:translateY(-6px) scale(1.02);
+
+    box-shadow:0 0 28px rgba(212,175,55,.25);
+
+}
+
+.gallery-grid img{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+}
+
+/* ==========GALERİ SAYFASI SONU================================== */
+/* ============================================================== */
+
+
+
+
+
+
+
 /* ===========YAN PANEL SONU=================================================== */
 /* ============================================================== */
 /* ============================================================== */
