@@ -285,7 +285,11 @@ document.querySelectorAll(".frame-btn").forEach((btn, index) => {
         const contentArea = document.getElementById('content-area');
         
         if (index === 0) { // Ana Sayfa
-            location.reload(); 
+           // Ana Sayfa: Hafızaya aldığımız orijinal içeriği geri yükle
+            contentArea.innerHTML = originalContent;
+            localStorage.setItem('panelDurumu', 'acik');
+
+            
         } else { // Diğerleri
             contentArea.innerHTML = `
                 <div class="gold-frame">
