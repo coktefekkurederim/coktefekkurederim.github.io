@@ -452,6 +452,15 @@ drop-shadow(0 0 18px rgba(212,175,55,.9));
 
 }
 
+.side-frame:hover .frame-btn .icon{
+    position:static;
+    transform:none;
+
+    width:54px;
+    min-width:54px;
+}
+
+
 .side-frame:hover .frame-btn .label{
 
     opacity:1;
