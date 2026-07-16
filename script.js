@@ -294,9 +294,7 @@ document.querySelectorAll(".frame-btn").forEach((btn, index) => {
         
         if (index === 0) { // Ana Sayfa
            // Ana Sayfa: Hafızaya aldığımız orijinal içeriği geri yükle
-            if (originalContent !== "") {
-                contentArea.innerHTML = originalContent;
-            }
+            contentArea.innerHTML = originalContent;
             localStorage.setItem('panelDurumu', 'acik');
 
             
