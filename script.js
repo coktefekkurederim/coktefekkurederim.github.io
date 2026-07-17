@@ -368,12 +368,16 @@ document.querySelectorAll(".subjects-list li").forEach(item=>{
 
         const pdf=item.dataset.pdf;
 
-        reader.innerHTML=`
-            <iframe
-                src="${pdf}"
-                class="pdf-viewer">
-            </iframe>
-        `;
+       reader.innerHTML=`
+    <h1 class="reader-title">
+        ${item.textContent.trim()}
+    </h1>
+
+    <iframe
+        src="${pdf}"
+        class="pdf-viewer">
+    </iframe>
+`;
 
     });
 
