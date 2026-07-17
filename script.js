@@ -266,7 +266,7 @@ const pages = {
     2: "author-page",
     3: "book-page",
     4: "gallery-page",
-    5: "contact-page"
+    5: "contact-page",
     6: "faq-page"
 };
 
