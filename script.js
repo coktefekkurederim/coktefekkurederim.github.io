@@ -382,7 +382,34 @@ document.querySelectorAll(".subjects-list li").forEach(item => {
 });
 
 
+/* ==========================================================
+   PDF KİTAP OKUYUCU
+========================================================== */
 
+const reader = document.getElementById("reader-content");
+
+document.querySelectorAll(".subjects-list li").forEach(item=>{
+
+    item.addEventListener("click",()=>{
+
+        document.querySelectorAll(".subjects-list li").forEach(li=>{
+            li.classList.remove("active");
+        });
+
+        item.classList.add("active");
+
+        const pdf=item.dataset.pdf;
+
+        reader.innerHTML=`
+            <iframe
+                src="${pdf}"
+                class="pdf-viewer">
+            </iframe>
+        `;
+
+    });
+
+});
 
 // ==========================================================
 // GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
