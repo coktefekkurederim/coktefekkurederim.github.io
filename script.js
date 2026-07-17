@@ -262,11 +262,12 @@ btn.innerText = buttonTexts[lang] || "📖 Read / Download";
 
 const pages = {
     0: "home-page",
-    1: "author-page",
-    2: "book-page",
-    3: "gallery-page",
-    4: "contact-page",
-    5: "faq-page"
+    1: "subject-page",
+    2: "author-page",
+    3: "book-page",
+    4: "gallery-page",
+    5: "contact-page"
+    6: "faq-page"
 };
 
 document.querySelectorAll(".frame-btn").forEach((btn, index) => {
