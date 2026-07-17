@@ -380,6 +380,13 @@ document.querySelectorAll(".subjects-list li").forEach(item=>{
 
 });
 
+// Sayfa ilk açıldığında Türkçe PDF'yi yükle
+reader.innerHTML = `
+    <iframe
+        src="turkce.pdf"
+        class="pdf-viewer">
+    </iframe>
+`;
 // ==========================================================
 // GELİŞMİŞ FARE HAREKET VE MOBİL TIKLAMA MOTORU
 // ==========================================================
