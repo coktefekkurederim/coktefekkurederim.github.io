@@ -613,49 +613,121 @@ scale(1.8);
 
 /* ==========KONULAR SAYFASI BAŞI================================== */
 /* ============================================================== */
-#subject-page .author-frame{
+/* ===========================
+   KONULAR SAYFASI
+===========================*/
 
-    width:min(1250px,92%);
-    margin:120px auto;
+.subjects-layout{
 
-    position:relative;
-
-    padding:60px;
-
-    border:1px solid rgba(212,175,55,.45);
-    border-radius:26px;
-
-    background:var(--glass);
-    backdrop-filter:blur(18px);
-
-    box-shadow:
-        inset 0 0 0 1px rgba(255,235,170,.08),
-        0 0 35px rgba(212,175,55,.08);
+display:flex;
+gap:35px;
+align-items:flex-start;
 
 }
 
-#subject-page .author-frame p{
+.subjects-sidebar{
 
-    text-align:justify;
-    font-size:1.12rem;
-    line-height:1.9;
-
-}
-
-#subject-page .author-frame h1,
-#subject-page .author-frame h2{
-
-    text-align:center;
+width:300px;
+flex-shrink:0;
 
 }
 
-#subject-page .author-frame::before{
-    content:"";
-    position:absolute;
-    inset:14px;
-    border:1px solid rgba(212,175,55,.25);
-    border-radius:18px;
-    pointer-events:none;
+.subjects-sidebar h2{
+
+margin:0 0 20px;
+font-family:"Cinzel Decorative",serif;
+color:var(--gold2);
+
+}
+
+.subjects-list{
+
+list-style:none;
+padding:0;
+margin:0;
+
+}
+
+.subjects-list li{
+
+padding:14px 18px;
+
+margin-bottom:10px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+background:rgba(255,255,255,.04);
+
+border:1px solid rgba(212,175,55,.25);
+
+transition:.3s;
+
+font-size:1.1rem;
+
+}
+
+.subjects-list li:hover{
+
+background:rgba(212,175,55,.15);
+
+transform:translateX(6px);
+
+}
+
+.subjects-list li.active{
+
+background:rgba(212,175,55,.22);
+
+border-color:var(--gold);
+
+}
+
+.subject-reader{
+
+flex:1;
+
+background:#f8f3df;
+
+border-radius:18px;
+
+padding:55px;
+
+min-height:850px;
+
+color:#2d2d2d;
+
+box-shadow:0 10px 40px rgba(0,0,0,.25);
+
+}
+
+.subject-reader h1{
+
+margin-top:0;
+
+font-family:"Cinzel Decorative",serif;
+
+color:#8b6800;
+
+}
+
+.subject-reader h2{
+
+color:#8b6800;
+
+}
+
+.subject-reader p{
+
+font-size:1.25rem;
+
+line-height:1.9;
+
+color:#333;
+
+text-align:justify;
+
 }
 
 /* ==========MÜELLİF SAYFASI BAŞI================================== */
