@@ -1323,6 +1323,14 @@ h1 {
 
 }
 
+.book-title-left{
+
+    text-shadow:
+        0 0 15px rgba(255,235,120,.5),
+        0 0 35px rgba(212,175,55,.4);
+
+}
+
 .book-title-right{
 
     text-shadow:
