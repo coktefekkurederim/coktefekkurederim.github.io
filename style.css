@@ -1985,7 +1985,7 @@ footer {
     margin: 40px auto;
     margin-top:35px;
 
-    font-family: "Cinzel Decorative", serif;
+    font-family: "Cinzel", serif !important;
 
     font-size: 1.2rem;
 
