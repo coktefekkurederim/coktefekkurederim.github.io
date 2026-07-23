@@ -1289,14 +1289,14 @@ h1 {
 .title-column.left{
 
     justify-self:end;
-    margin-right:25px;
+    margin-right:33px;
 
 }
 
 .title-column.right{
 
     justify-self:start;
-    margin-left:25px;
+    margin-left:33px;
 
 }
 
