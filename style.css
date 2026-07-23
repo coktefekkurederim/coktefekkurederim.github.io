@@ -1364,14 +1364,15 @@ h1 {
 
     display:grid;
 
-    grid-template-columns:1fr auto 1fr;
+    grid-template-columns:auto auto auto;
+
+    justify-content:center;
 
     align-items:center;
 
-    gap:50px;
+    column-gap:30px;
 
 }
-
 .fade-in-title{
 
     display:flex;
@@ -1392,6 +1393,11 @@ h2 {
     letter-spacing: 4px;
 }
 
+.title-column{
+
+    text-align:center;
+
+}
 
 /* ==========================================================
    TEMA DEĞİŞTİRİCİ
