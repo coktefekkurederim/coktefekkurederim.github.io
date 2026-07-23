@@ -1649,7 +1649,8 @@ h1 span {
 
 .social-section h3 {
     font-family: "Cinzel Decorative", serif;
-    color: var(--gold2);
+    color: #e3decb;
+    color:var(--text2);
     font-size: 1.2rem;
     letter-spacing: 2px;
     margin-bottom: 20px;
@@ -1994,7 +1995,8 @@ footer {
 
     text-transform:uppercase;
 
-    color: var(--gold2);   /* Social bölümündeki yazı rengiyle aynı */
+    color: #e3decb;
+    color:var(--text2);
 
     line-height:1.5;
 
