@@ -240,6 +240,8 @@ const buttonTexts = {
     "Русский": "📖 Читать / Скачать",
     "Deutsch": "📖 Lesen / Herunterladen",
     "Português": "📖 Ler / Baixar"
+    "French": "📖 LIRE / TÉLÉCHARGER",
+    
 };
 
 btn.innerText = buttonTexts[lang] || "📖 Read / Download";
