@@ -239,7 +239,7 @@ const buttonTexts = {
     "Español": "📖 Leer / Descargar",
     "Русский": "📖 Читать / Скачать",
     "Deutsch": "📖 Lesen / Herunterladen",
-    "Português": "📖 Ler / Baixar"
+    "Português": "📖 Ler / Baixar",
     "French": "📖 LIRE / TÉLÉCHARGER",
     
 };
