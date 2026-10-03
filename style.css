@@ -13,6 +13,138 @@
 }
 
 /* ==========================================================
+   İLK GİRİŞ POP-UP (İnsan Yazımı Analizi)
+========================================================== */
+
+.human-popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(8px);
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.human-popup {
+  position: relative;
+  background: linear-gradient(145deg, #1a1408, #0d0902);
+  border: 1.5px solid rgba(212, 175, 55, 0.55);
+  border-radius: 18px;
+  max-width: 520px;
+  width: 100%;
+  padding: 32px 28px 28px;
+  box-shadow:
+    0 0 40px rgba(212, 175, 55, 0.25),
+    0 20px 50px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  animation: popupScale 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
+}
+
+@keyframes popupScale {
+  from { transform: scale(0.85); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+.human-popup-close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  color: #d4af37;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.75;
+  transition: 0.25s;
+}
+
+.human-popup-close:hover {
+  opacity: 1;
+  transform: scale(1.15);
+}
+
+.human-popup-title {
+  margin: 0 0 12px;
+  font-family: "Cinzel Decorative", serif;
+  font-size: 1.35rem;
+  color: #f4df8a;
+  letter-spacing: 0.5px;
+}
+
+.human-popup-desc {
+  margin: 0 0 20px;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #e3decb;
+  opacity: 0.9;
+}
+
+.human-popup-img-wrap {
+  margin: 0 auto 22px;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+}
+
+.human-popup-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  background: #111;
+}
+
+.human-popup-btn {
+  display: inline-block;
+  padding: 11px 36px;
+  background: linear-gradient(135deg, #d4af37, #b8902a);
+  color: #1a1408;
+  border: none;
+  border-radius: 30px;
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+}
+
+.human-popup-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(212, 175, 55, 0.55);
+}
+
+/* Mobil uyumluluk */
+@media (max-width: 600px) {
+  .human-popup {
+    padding: 26px 18px 22px;
+  }
+  .human-popup-title {
+    font-size: 1.15rem;
+  }
+  .human-popup-img {
+    max-height: 260px;
+  }
+}
+
+
+
+
+
+/* ==========================================================
    TEMA DEĞİŞTİRİCİNİN RENKLERİ
 ========================================================== */
 
