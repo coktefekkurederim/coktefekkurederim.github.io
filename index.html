@@ -131,22 +131,34 @@
   <div class="human-popup">
     <button class="human-popup-close" id="human-popup-close" aria-label="Kapat">×</button>
     
-    <h3 class="human-popup-title">%100 EL YAZIMI</h3>
-        <h3 class="human-popup-title">%100 HAND-WRITTEN</h3>
+    <h3 class="human-popup-title">
+      Bu kitap %100 insan yazımıdır<br>
+      <span class="title-en">This book is 100% human-written</span>
+    </h3>
     
     <p class="human-popup-desc">
-      Aşağıdaki analiz sonucu, metnin yapay zekâ değil, insan tarafından yazıldığını göstermektedir.
+      Aşağıdaki analiz sonuçları, metnin yapay zekâ değil, insan tarafından yazıldığını göstermektedir.<br>
+      <span class="desc-en">The analysis results below show that the text was written by a human, not by artificial intelligence.</span>
     </p>
-   <small style="opacity:0.7;">Büyütmek için görsele tıklayın.</small>
     
-    <p class="human-popup-desc">
-      The result of the analysis below indicates that the text was written by a human, not by artificial intelligence.
-    </p>
-   <small style="opacity:0.7;">Click on the image to enlarge. </small>
-
+    <div class="slider-container">
+      <button class="slider-arrow left" id="slider-prev" aria-label="Önceki">‹</button>
+      
+      <div class="slider-track" id="slider-track">
+        <div class="slider-slide">
+          <img src="analiz1.png" alt="Analiz 1" class="human-popup-img">
+        </div>
+        <div class="slider-slide">
+          <img src="analiz2.png" alt="Analiz 2" class="human-popup-img">
+        </div>
+      </div>
+      
+      <button class="slider-arrow right" id="slider-next" aria-label="Sonraki">›</button>
+    </div>
     
-    <div class="human-popup-img-wrap">
-      <img src="analiz.png" alt="İnsan yazımı analiz sonucu" class="human-popup-img">
+    <div class="slider-dots">
+      <span class="dot active" data-index="0"></span>
+      <span class="dot" data-index="1"></span>
     </div>
   </div>
 </div>
