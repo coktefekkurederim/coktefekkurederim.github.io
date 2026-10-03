@@ -85,34 +85,37 @@
   font-family: "Cinzel Decorative", serif;
   font-size: 1.35rem;
   color: #f4df8a;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .human-popup-title .title-en {
   display: block;
-  margin-top: 4px;
-  font-size: 0.95rem;
-  font-family: "Cormorant Garamond", serif;
+  margin-top: 6px;
+  font-family: "Cinzel Decorative", serif;   /* Türkçe ile aynı font */
+  font-size: 1.15rem;                       /* neredeyse aynı boyut */
   font-weight: 400;
-  color: #e3decb;
-  opacity: 0.85;
-  letter-spacing: 0.3px;
+  color: #f4df8a;                           /* aynı altın renk */
+  opacity: 0.92;
+  letter-spacing: 0.4px;
 }
 
 .human-popup-desc {
   margin: 0 0 16px;
   font-size: 1rem;
-  line-height: 1.45;
+  line-height: 1.5;
   color: #e3decb;
-  opacity: 0.9;
+  opacity: 0.95;
+  font-family: "Cormorant Garamond", serif;
 }
 
 .human-popup-desc .desc-en {
   display: block;
-  margin-top: 6px;
-  font-size: 0.92rem;
-  opacity: 0.75;
-  font-style: italic;
+  margin-top: 8px;
+  font-size: 1rem;                          /* Türkçe ile aynı boyut */
+  font-family: "Cormorant Garamond", serif; /* aynı font */
+  color: #e3decb;                           /* aynı renk */
+  opacity: 0.9;
+  font-style: normal;                       /* italik değil */
 }
 
 /* ===== SLIDER ===== */
