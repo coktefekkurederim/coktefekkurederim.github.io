@@ -25,36 +25,69 @@ if (musicBtn && bgMusic) {
 }
 
 /* ==========================================================
-   İLK GİRİŞ POP-UP (İnsan Yazımı Analizi)
+   İLK GİRİŞ POP-UP + SLIDER (2 görsel)
 ========================================================== */
 document.addEventListener("DOMContentLoaded", () => {
-  const overlay = document.getElementById("human-popup-overlay");
-  const closeBtn = document.getElementById("human-popup-close");
-  const imgWrap = document.getElementById("human-img-wrap");
+  const overlay   = document.getElementById("human-popup-overlay");
+  const closeBtn  = document.getElementById("human-popup-close");
+  const track     = document.getElementById("slider-track");
+  const prevBtn   = document.getElementById("slider-prev");
+  const nextBtn   = document.getElementById("slider-next");
+  const dots      = document.querySelectorAll(".slider-dots .dot");
 
-  // Her yenilemede göster
+  let current = 0;
+  const total = 2;
+
+  // Her yenilemede göster + arka planı kilitle
   overlay.style.display = "flex";
+  document.body.classList.add("popup-open");
 
-  function closePopup() {
-    // Eğer büyütülmüşse önce küçült
-    if (imgWrap.classList.contains("zoomed")) {
-      imgWrap.classList.remove("zoomed");
-      return;
-    }
-    overlay.style.display = "none";
+  function goTo(index) {
+    current = (index + total) % total;
+    track.style.transform = `translateX(-${current * 50}%)`;
+    
+    dots.forEach((dot, i) => {
+      dot.classList.toggle("active", i === current);
+    });
   }
 
-  closeBtn.addEventListener("click", closePopup);
-
-  // Overlay'e tıklayınca kapat
-  overlay.addEventListener("click", (e) => {
-    if (e.target === overlay) closePopup();
+  prevBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    goTo(current - 1);
   });
 
-  // Görsele tıklayınca büyüt / küçült
-  imgWrap.addEventListener("click", (e) => {
-    e.stopPropagation(); // overlay'e taşmasın
-    imgWrap.classList.toggle("zoomed");
+  nextBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    goTo(current + 1);
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goTo(Number(dot.dataset.index));
+    });
+  });
+
+  // Klavye ile gezinme
+  document.addEventListener("keydown", (e) => {
+    if (overlay.style.display !== "flex") return;
+    if (e.key === "ArrowLeft")  goTo(current - 1);
+    if (e.key === "ArrowRight") goTo(current + 1);
+    if (e.key === "Escape")     closePopup();
+  });
+
+  function closePopup() {
+    overlay.style.display = "none";
+    document.body.classList.remove("popup-open");
+  }
+
+  closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    closePopup();
+  });
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closePopup();
   });
 });
 
