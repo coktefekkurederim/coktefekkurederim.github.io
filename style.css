@@ -13,20 +13,22 @@
 }
 
 /* ==========================================================
-   İLK GİRİŞ POP-UP (İnsan Yazımı Analizi)
+   İLK GİRİŞ POP-UP + SLIDER
 ========================================================== */
 
 .human-popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.82);
+  background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
-  z-index: 999999;
+  z-index: 2147483647;          /* en üst seviye */
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 12px;
   animation: fadeIn 0.35s ease;
+  pointer-events: auto;         /* tıklamaları mutlaka alsın */
+  cursor: default;
 }
 
 @keyframes fadeIn {
@@ -39,15 +41,16 @@
   background: linear-gradient(145deg, #1a1408, #0d0902);
   border: 1.5px solid rgba(212, 175, 55, 0.55);
   border-radius: 16px;
-  max-width: 960px;
-  width: 97%;
+  max-width: 920px;
+  width: 96%;
   max-height: 94vh;
-  padding: 24px 20px 20px;
+  padding: 24px 16px 20px;
   box-shadow:
     0 0 40px rgba(212, 175, 55, 0.22),
     0 20px 50px rgba(0, 0, 0, 0.55);
   text-align: center;
-  overflow-y: auto;
+  overflow: hidden;
+  pointer-events: auto;
   animation: popupScale 0.4s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
@@ -68,7 +71,8 @@
   cursor: pointer;
   opacity: 0.85;
   transition: 0.25s;
-  z-index: 5;
+  z-index: 10;
+  pointer-events: auto;
 }
 
 .human-popup-close:hover {
@@ -81,72 +85,155 @@
   font-family: "Cinzel Decorative", serif;
   font-size: 1.35rem;
   color: #f4df8a;
+  line-height: 1.35;
+}
+
+.human-popup-title .title-en {
+  display: block;
+  margin-top: 4px;
+  font-size: 0.95rem;
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 400;
+  color: #e3decb;
+  opacity: 0.85;
+  letter-spacing: 0.3px;
 }
 
 .human-popup-desc {
-  margin: 0 0 14px;
+  margin: 0 0 16px;
   font-size: 1rem;
   line-height: 1.45;
   color: #e3decb;
   opacity: 0.9;
 }
 
-.human-popup-img-wrap {
-  margin: 0 auto;
-  border-radius: 10px;
+.human-popup-desc .desc-en {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.92rem;
+  opacity: 0.75;
+  font-style: italic;
+}
+
+/* ===== SLIDER ===== */
+.slider-container {
+  position: relative;
+  width: 100%;
   overflow: hidden;
+  border-radius: 10px;
   border: 1px solid rgba(212, 175, 55, 0.35);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
   background: #0a0a0a;
-  cursor: zoom-in;
-  transition: 0.3s;
+  pointer-events: auto;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s ease;
+  width: 200%;
+}
+
+.slider-slide {
+  width: 50%;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .human-popup-img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 68vh;
+  max-height: 62vh;
   object-fit: contain;
+  pointer-events: auto;
 }
 
-/* ===== BÜYÜTÜLMÜŞ HAL (tıklayınca) ===== */
-.human-popup-img-wrap.zoomed {
-  position: fixed;
-  inset: 0;
-  z-index: 1000000;
-  border-radius: 0;
-  border: none;
-  background: rgba(0, 0, 0, 0.95);
+/* Oklar */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 175, 55, 0.6);
+  background: rgba(20, 15, 5, 0.75);
+  color: #f4df8a;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 5;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: zoom-out;
-  padding: 20px;
-  overflow: auto;
+  transition: 0.25s;
+  backdrop-filter: blur(4px);
+  pointer-events: auto;
 }
 
-.human-popup-img-wrap.zoomed .human-popup-img {
-  max-width: 98vw;
-  max-height: 96vh;
-  width: auto;
-  height: auto;
-  object-fit: contain;
+.slider-arrow:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: #f4df8a;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.slider-arrow.left  { left: 10px; }
+.slider-arrow.right { right: 10px; }
+
+/* Noktalar */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  pointer-events: auto;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(212, 175, 55, 0.35);
+  cursor: pointer;
+  transition: 0.25s;
+  pointer-events: auto;
+}
+
+.dot.active {
+  background: #d4af37;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+  transform: scale(1.2);
 }
 
 /* Mobil */
 @media (max-width: 600px) {
   .human-popup {
-    padding: 20px 12px 16px;
+    padding: 20px 10px 16px;
   }
   .human-popup-title {
     font-size: 1.1rem;
   }
   .human-popup-img {
-    max-height: 58vh;
+    max-height: 52vh;
+  }
+  .slider-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 24px;
   }
 }
 
+/* Pop-up açıkken arka plan tıklanamasın */
+body.popup-open {
+  overflow: hidden;
+}
+body.popup-open .side-frame,
+body.popup-open .theme-switcher,
+body.popup-open .music-btn,
+body.popup-open .gold-dust-container {
+  pointer-events: none !important;
+}
 
 
 
