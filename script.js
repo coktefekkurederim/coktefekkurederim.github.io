@@ -25,6 +25,41 @@ if (musicBtn && bgMusic) {
 }
 
 /* ==========================================================
+   İLK GİRİŞ POP-UP (İnsan Yazımı Analizi)
+========================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("human-popup-overlay");
+  const closeBtn = document.getElementById("human-popup-close");
+  const okBtn = document.getElementById("human-popup-ok");
+
+  // Daha önce kapatılmışsa gösterme
+  if (localStorage.getItem("humanPopupClosed") === "true") {
+    return;
+  }
+
+  // İlk girişte göster
+  overlay.style.display = "flex";
+
+  function closePopup() {
+    overlay.style.display = "none";
+    localStorage.setItem("humanPopupClosed", "true");
+  }
+
+  closeBtn.addEventListener("click", closePopup);
+  okBtn.addEventListener("click", closePopup);
+
+  // Overlay'e tıklayınca da kapansın (isteğe bağlı)
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closePopup();
+  });
+});
+
+
+
+
+
+
+/* ==========================================================
    TEMA SEÇİCİ BUTONU
 ========================================================== */
 
