@@ -33,16 +33,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const okBtn = document.getElementById("human-popup-ok");
 
   // Daha önce kapatılmışsa gösterme
-  if (localStorage.getItem("humanPopupClosed") === "true") {
-    return;
-  }
+//  if (localStorage.getItem("humanPopupClosed") === "true") {        <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz. Aşağıdaki ile birlikte
+//    return;                                                         <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz. getitem ve set item
+//  }                                                                 <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz.
 
   // İlk girişte göster
   overlay.style.display = "flex";
 
   function closePopup() {
     overlay.style.display = "none";
-    localStorage.setItem("humanPopupClosed", "true");
+    // localStorage.setItem("humanPopupClosed", "true");              <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz.
   }
 
   closeBtn.addEventListener("click", closePopup);
