@@ -25,7 +25,7 @@ if (musicBtn && bgMusic) {
 }
 
 /* ==========================================================
-   İLK GİRİŞ POP-UP + SLIDER (2 görsel)
+   İLK GİRİŞ POP-UP + SLIDER (2 görsel) + TIKLAYINCA BÜYÜT
 ========================================================== */
 document.addEventListener("DOMContentLoaded", () => {
   const overlay   = document.getElementById("human-popup-overlay");
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prevBtn   = document.getElementById("slider-prev");
   const nextBtn   = document.getElementById("slider-next");
   const dots      = document.querySelectorAll(".slider-dots .dot");
+  const slides    = document.querySelectorAll(".slider-slide");
 
   let current = 0;
   const total = 2;
@@ -43,9 +44,12 @@ document.addEventListener("DOMContentLoaded", () => {
   document.body.classList.add("popup-open");
 
   function goTo(index) {
+    // Büyütülmüş slide varsa küçült
+    slides.forEach(s => s.classList.remove("zoomed"));
+
     current = (index + total) % total;
     track.style.transform = `translateX(-${current * 50}%)`;
-    
+
     dots.forEach((dot, i) => {
       dot.classList.toggle("active", i === current);
     });
@@ -68,15 +72,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // Klavye ile gezinme
+  // Görsele tıklayınca büyüt / küçült
+  slides.forEach(slide => {
+    slide.addEventListener("click", (e) => {
+      e.stopPropagation();
+      // Sadece resme tıklanınca
+      if (e.target.classList.contains("human-popup-img")) {
+        slide.classList.toggle("zoomed");
+      }
+    });
+  });
+
+  // Klavye
   document.addEventListener("keydown", (e) => {
     if (overlay.style.display !== "flex") return;
+
+    // Büyütülmüşse önce küçült
+    const zoomed = document.querySelector(".slider-slide.zoomed");
+    if (zoomed && (e.key === "Escape" || e.key === "ArrowLeft" || e.key === "ArrowRight")) {
+      zoomed.classList.remove("zoomed");
+      if (e.key === "Escape") return;
+    }
+
     if (e.key === "ArrowLeft")  goTo(current - 1);
     if (e.key === "ArrowRight") goTo(current + 1);
     if (e.key === "Escape")     closePopup();
   });
 
   function closePopup() {
+    slides.forEach(s => s.classList.remove("zoomed"));
     overlay.style.display = "none";
     document.body.classList.remove("popup-open");
   }
@@ -90,7 +114,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === overlay) closePopup();
   });
 });
-
 
 
 
