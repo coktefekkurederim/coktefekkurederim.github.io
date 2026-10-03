@@ -19,13 +19,13 @@
 .human-popup-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.72);
+  background: rgba(0, 0, 0, 0.78);
   backdrop-filter: blur(8px);
   z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
   animation: fadeIn 0.4s ease;
 }
 
@@ -39,13 +39,15 @@
   background: linear-gradient(145deg, #1a1408, #0d0902);
   border: 1.5px solid rgba(212, 175, 55, 0.55);
   border-radius: 18px;
-  max-width: 520px;
-  width: 100%;
-  padding: 32px 28px 28px;
+  max-width: 860px;          /* daha geniş */
+  width: 96%;
+  max-height: 92vh;
+  padding: 28px 24px 24px;
   box-shadow:
     0 0 40px rgba(212, 175, 55, 0.25),
     0 20px 50px rgba(0, 0, 0, 0.5);
   text-align: center;
+  overflow-y: auto;
   animation: popupScale 0.45s cubic-bezier(0.2, 0.9, 0.2, 1);
 }
 
@@ -56,16 +58,17 @@
 
 .human-popup-close {
   position: absolute;
-  top: 12px;
-  right: 16px;
+  top: 10px;
+  right: 14px;
   background: none;
   border: none;
   color: #d4af37;
-  font-size: 28px;
+  font-size: 32px;
   line-height: 1;
   cursor: pointer;
-  opacity: 0.75;
+  opacity: 0.8;
   transition: 0.25s;
+  z-index: 2;
 }
 
 .human-popup-close:hover {
@@ -74,69 +77,49 @@
 }
 
 .human-popup-title {
-  margin: 0 0 12px;
+  margin: 0 0 10px;
   font-family: "Cinzel Decorative", serif;
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   color: #f4df8a;
   letter-spacing: 0.5px;
 }
 
 .human-popup-desc {
-  margin: 0 0 20px;
+  margin: 0 0 16px;
   font-size: 1.05rem;
-  line-height: 1.55;
+  line-height: 1.5;
   color: #e3decb;
   opacity: 0.9;
 }
 
 .human-popup-img-wrap {
-  margin: 0 auto 22px;
+  margin: 0 auto;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid rgba(212, 175, 55, 0.35);
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.35);
+  background: #0a0a0a;
 }
 
 .human-popup-img {
   display: block;
   width: 100%;
   height: auto;
-  max-height: 340px;
+  max-height: 72vh;          /* ekranın büyük kısmını kaplasın */
   object-fit: contain;
-  background: #111;
 }
 
-.human-popup-btn {
-  display: inline-block;
-  padding: 11px 36px;
-  background: linear-gradient(135deg, #d4af37, #b8902a);
-  color: #1a1408;
-  border: none;
-  border-radius: 30px;
-  font-family: "Cinzel", serif;
-  font-size: 1rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: 0.3s;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-}
-
-.human-popup-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 22px rgba(212, 175, 55, 0.55);
-}
-
-/* Mobil uyumluluk */
+/* Mobil */
 @media (max-width: 600px) {
   .human-popup {
-    padding: 26px 18px 22px;
+    padding: 22px 14px 18px;
+    max-width: 98%;
   }
   .human-popup-title {
     font-size: 1.15rem;
   }
   .human-popup-img {
-    max-height: 260px;
+    max-height: 60vh;
   }
 }
 
