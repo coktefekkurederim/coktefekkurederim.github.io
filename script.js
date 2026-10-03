@@ -30,7 +30,7 @@ if (musicBtn && bgMusic) {
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("human-popup-overlay");
   const closeBtn = document.getElementById("human-popup-close");
-  const okBtn = document.getElementById("human-popup-ok");
+ 
 
   // Daha önce kapatılmışsa gösterme
 //  if (localStorage.getItem("humanPopupClosed") === "true") {        <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz. Aşağıdaki ile birlikte
@@ -46,13 +46,15 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   closeBtn.addEventListener("click", closePopup);
-  okBtn.addEventListener("click", closePopup);
+ 
 
   // Overlay'e tıklayınca da kapansın (isteğe bağlı)
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closePopup();
   });
 });
+
+
 
 
 
