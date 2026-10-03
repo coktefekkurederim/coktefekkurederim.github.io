@@ -30,27 +30,31 @@ if (musicBtn && bgMusic) {
 document.addEventListener("DOMContentLoaded", () => {
   const overlay = document.getElementById("human-popup-overlay");
   const closeBtn = document.getElementById("human-popup-close");
- 
+  const imgWrap = document.getElementById("human-img-wrap");
 
-  // Daha önce kapatılmışsa gösterme
-//  if (localStorage.getItem("humanPopupClosed") === "true") {        <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz. Aşağıdaki ile birlikte
-//    return;                                                         <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz. getitem ve set item
-//  }                                                                 <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz.
-
-  // İlk girişte göster
+  // Her yenilemede göster
   overlay.style.display = "flex";
 
   function closePopup() {
+    // Eğer büyütülmüşse önce küçült
+    if (imgWrap.classList.contains("zoomed")) {
+      imgWrap.classList.remove("zoomed");
+      return;
+    }
     overlay.style.display = "none";
-    // localStorage.setItem("humanPopupClosed", "true");              <<<  baştaki // işaretlerini kaldırırsan her yenilemede tekrar açılmaz.
   }
 
   closeBtn.addEventListener("click", closePopup);
- 
 
-  // Overlay'e tıklayınca da kapansın (isteğe bağlı)
+  // Overlay'e tıklayınca kapat
   overlay.addEventListener("click", (e) => {
     if (e.target === overlay) closePopup();
+  });
+
+  // Görsele tıklayınca büyüt / küçült
+  imgWrap.addEventListener("click", (e) => {
+    e.stopPropagation(); // overlay'e taşmasın
+    imgWrap.classList.toggle("zoomed");
   });
 });
 
