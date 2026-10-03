@@ -238,6 +238,45 @@ body.popup-open .gold-dust-container {
   pointer-events: none !important;
 }
 
+/* ===== GÖRSEL BÜYÜTME (tıklayınca) ===== */
+.slider-slide.zoomed {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  width: 100% !important;
+  background: rgba(0, 0, 0, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  padding: 16px;
+  overflow: auto;
+}
+
+.slider-slide.zoomed .human-popup-img {
+  max-width: 98vw;
+  max-height: 96vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  cursor: zoom-out;
+}
+
+.human-popup-img {
+  cursor: zoom-in;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
