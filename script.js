@@ -168,6 +168,40 @@ if(saved){
 ========================================================== */
 
 
+
+
+
+
+
+
+/* ==========================================================
+   SAĞ ÜST BUTON İPUÇLARI (8 saniye)
+========================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  const hints = document.getElementById("hint-arrows");
+  if (!hints) return;
+
+  // 8 saniye sonra yumuşakça kaybol
+  setTimeout(() => {
+    hints.classList.add("hide");
+    // animasyon bitsin diye biraz sonra DOM'dan da kaldırılabilir
+    setTimeout(() => {
+      hints.style.display = "none";
+    }, 1300);
+  }, 8000);
+});
+
+
+/* ==========================================================
+========================================================== */
+
+
+
+
+
+
+
+
 /* ==========================================================
   YAN PANEL BUTONU ÜZERİNDE DÖNEN IŞIK 
 ========================================================== */
