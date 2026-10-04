@@ -389,6 +389,120 @@ body[data-theme="pink"]{
 ========================================================== */
 
 
+/* ==========================================================
+   SAĞ ÜST BUTON İPUÇLARI (nefes alan oklar)
+========================================================== */
+
+.hint-arrows {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 99990; /* pop-up'ın altında, ama butonların üstünde */
+  opacity: 1;
+  transition: opacity 1.2s ease;
+}
+
+.hint-arrows.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hint-arrow {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  animation: hintBreath 2.2s ease-in-out infinite;
+}
+
+/* Tema butonu (palette) konumu – sağ üst */
+.hint-theme {
+  top: 58px;
+  right: 78px;
+  animation-delay: 0s;
+}
+
+/* Müzik butonu konumu – sağ üst */
+.hint-music {
+  top: 58px;
+  right: 200px;
+  animation-delay: 0.4s;
+}
+
+.hint-label {
+  font-family: "Cinzel", serif;
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  color: #f4df8a;
+  background: rgba(13, 9, 2, 0.75);
+  border: 1px solid rgba(212, 175, 55, 0.45);
+  padding: 4px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.hint-pointer {
+  font-size: 1.6rem;
+  color: #f4df8a;
+  text-shadow:
+    0 0 8px rgba(212, 175, 55, 0.8),
+    0 0 18px rgba(212, 175, 55, 0.5);
+  line-height: 1;
+  transform: translateX(6px);
+}
+
+/* Nefes alma animasyonu */
+@keyframes hintBreath {
+  0%, 100% {
+    opacity: 0.55;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-6px);
+  }
+}
+
+/* Mobilde biraz ayarla */
+@media (max-width: 700px) {
+  .hint-theme {
+    top: 52px;
+    right: 16px;
+  }
+  .hint-music {
+    top: 52px;
+    right: 120px;
+  }
+  .hint-label {
+    font-size: 0.7rem;
+    padding: 3px 8px;
+  }
+  .hint-pointer {
+    font-size: 1.35rem;
+  }
+}
+
+
+/* ==========================================================
+========================================================== */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
