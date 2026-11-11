@@ -1591,7 +1591,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 12px; /* Boşluğu biraz azalttık (18px'ten) */
+    gap: 12px;
     flex-wrap: nowrap;
     padding: 0 10px;
     box-sizing: border-box;
@@ -1602,6 +1602,9 @@ h1 {
     flex-direction: column;
     align-items: center;
     width: 100%;
+    /* Alt taraftaki içeriklerin üst üste binmesini veya kaybolmasını önler */
+    height: auto; 
+    overflow: visible; 
 }
 
 /* Sütunlar */
