@@ -1573,14 +1573,16 @@ h1 {
 /* Orta ve sağ kitap başlıkları için canlı/ateş kırmızı tonları */
 .book-title-center {
     text-shadow:
-        0 0 15px rgba(255, 0, 0, 0.6),
-        0 0 35px rgba(139, 0, 0, 0.5);
+        0 0 10px rgba(255, 235, 120, 0.9),   /* İç kısımdaki parlak altın sarısı */
+        0 0 20px rgba(212, 175, 55, 0.7),    /* Orta kısım klasik altın tonu */
+        0 0 35px rgba(184, 134, 11, 0.5);    /* Dış kısım derin bronz/altın gölge */
 }
 
 .book-title-right {
-        text-shadow:
-        0 0 15px rgba(255, 69, 0, 0.6),
-        0 0 35px rgba(178, 34, 34, 0.5);
+    text-shadow:
+        0 0 10px rgba(255, 255, 255, 0.9),   /* İç kısımdaki keskin gümüş beyazı parıltı */
+        0 0 20px rgba(215, 222, 232, 0.7),   /* Orta kısım hafif soğuk metalik gümüş tonu */
+        0 0 35px rgba(175, 185, 200, 0.5);   /* Dış kısım derin gümüş/gri gölge */
 }
 
 /* Ana container - üç başlık yan yana */
