@@ -1898,7 +1898,7 @@ h1 span {
     will-change: transform, opacity;
     
     /* Başlangıçta görünmez ve yukarıda dururlar (JS inderecek) */
-    opacity: 0;
+    opacity: 1;
     transform: translateY(-100px) scale(0.7) rotateX(20deg);
     
     /* Fare hareketlerini algılayacak yumuşak geçiş kuralı */
