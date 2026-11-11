@@ -1564,12 +1564,19 @@ h1 {
 }
 
 .book-title-left {
-    text-shadow:
+        text-shadow:
+        0 0 15px rgba(255, 40, 0, 0.6),   /* İç kısımdaki canlı kırmızı parıltı */
+        0 0 35px rgba(180, 0, 0, 0.5);    /* Dış kısımdaki derin/koyu kırmızı gölge */
+}
+
+.book-title-center {
+        text-shadow:
         0 0 15px rgba(255,235,120,.5),
         0 0 35px rgba(212,175,55,.4);
 }
 
-.book-title-center,
+
+
 .book-title-right {
     text-shadow:
         0 0 15px rgba(255,160,50,.5),
@@ -1630,15 +1637,7 @@ h1 {
     box-shadow: 0 0 12px rgba(212,175,55,.45);
 }
 
-/* Alt başlık (h2) */
-h2 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 1.8rem;
-    font-weight: 400;
-    color: var(--heading);
-    margin: 25px 0 0;
-    letter-spacing: 4px;
-}
+
 
 
 /* =====BAŞLIK ALTINDAKİ ASLAN ÇAKMAK====================================== */
@@ -1648,7 +1647,7 @@ h2 {
     font-weight: 400;
     color: #c9b080;
     color: var(--heading);
-    margin: 25px 0 0;
+    margin: 30px 0 0;
     letter-spacing: 4px;
 }
 
