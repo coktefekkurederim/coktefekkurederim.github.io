@@ -1899,7 +1899,7 @@ h1 span {
     
     /* Başlangıçta görünmez ve yukarıda dururlar (JS inderecek) */
     opacity: 1;
-    transform: translateY(-100px) scale(0.7) rotateX(20deg);
+    transform: none;
     
     /* Fare hareketlerini algılayacak yumuşak geçiş kuralı */
     transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
