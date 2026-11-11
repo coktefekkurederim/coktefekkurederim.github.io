@@ -1544,11 +1544,12 @@ header {
 /* =====BAŞLIK ÇOK TEFEKKÜR EDERİM====================================== */
 h1 {
     font-family: "Cinzel Decorative", serif;
-    font-size: clamp(1.7rem, 3.8vw, 3.1rem);
+    /* Mobilde ve dar ekranlarda taşmayı önlemek için clamp değerlerini biraz daralttık */
+    font-size: clamp(1.2rem, 2.5vw, 2.8rem);
     margin: 0;
     color: var(--heading);
     text-shadow: 0 0 25px rgba(212,175,55,0.25);
-    letter-spacing: 1.8px;
+    letter-spacing: 1px; /* Harf aralığını biraz daraltmak sığmayı kolaylaştırır */
     line-height: 1.15;
     white-space: nowrap;
 }
@@ -1559,6 +1560,7 @@ h1 {
     margin: 0;
     text-align: center;
     flex: 1;
+    min-width: 0; /* Flexbox'ta metnin taşmasını ve aşağı kaymasını engelleyen kritik özellik */
 }
 
 .book-title-left {
@@ -1582,9 +1584,9 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 18px;
+    gap: 12px; /* Boşluğu biraz azalttık (18px'ten) */
     flex-wrap: nowrap;
-    padding: 0 20px;
+    padding: 0 10px;
     box-sizing: border-box;
 }
 
@@ -1592,12 +1594,15 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
 }
 
 /* Sütunlar */
 .title-column {
     text-align: center;
     margin: 0 !important;
+    flex: 1;
+    min-width: 0; /* Flex elemanlarının esneyebilmesi için */
 }
 
 .title-column.left,
@@ -1610,7 +1615,7 @@ h1 {
 /* Ayırıcı çizgiler */
 .title-separator {
     width: 1px;
-    height: 85px;
+    height: 65px; /* Yüksekliği biraz dengeledik */
     flex-shrink: 0;
     position: static;
     left: auto;
